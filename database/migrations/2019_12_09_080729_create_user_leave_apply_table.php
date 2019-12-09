@@ -13,6 +13,7 @@ class CreateUserLeaveApplyTable extends Migration
      */
     public function up()
     {
+        //tablename user_leave_applies kkk
         Schema::create('user_leave_applies', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('employee_id')->unsigned();
