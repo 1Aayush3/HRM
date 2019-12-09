@@ -16,7 +16,6 @@
 // });
 
 Route::resource('employees', 'EmployeeController');
-Route::get('/','EmployeeController@index');
+Route::get('/', 'EmployeeController@index');
 Auth::routes(['register' => false]);
 Route::get('/home', 'HomeController@index')->name('home');
-?>
