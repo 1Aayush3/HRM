@@ -11,6 +11,7 @@ class CreateUserLeaveApplyTable extends Migration
      *
      * @return void
      */
+    //leave applies
     public function up()
     {
         Schema::create('user_leave_applies', function (Blueprint $table) {
