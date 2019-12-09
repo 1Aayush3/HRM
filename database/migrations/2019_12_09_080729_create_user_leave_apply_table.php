@@ -11,6 +11,7 @@ class CreateUserLeaveApplyTable extends Migration
      *
      * @return void
      */
+    //akhjhasnjksanjkas
     public function up()
     {
         //tablename user_leave_applies kkk
