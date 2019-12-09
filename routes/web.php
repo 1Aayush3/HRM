@@ -14,11 +14,9 @@
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('/', function () {
-    return view('Pages.employee');
-});
-Route::resource('employees', 'EmployeeController');
 
+Route::resource('employees', 'EmployeeController');
+Route::get('/','EmployeeController@index');
 Auth::routes(['register' => false]);
 Route::get('/home', 'HomeController@index')->name('home');
 ?>
