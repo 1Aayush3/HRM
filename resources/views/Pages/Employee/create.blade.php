@@ -83,7 +83,11 @@
                     </div>
 
                     <div class="form-group">
+<<<<<<< HEAD
                         <label for="exampleInputFile">Upload Image</label>
+=======
+                        <label for="exampleInputFile">Upload Image*</label>
+>>>>>>> migrations
                         {!! Form::file('logo', ['ref' => 'file', 'id' => 'file'])!!}
                         <p class="help-block">Example block-level help text here.</p>
                     </div>
