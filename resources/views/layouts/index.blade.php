@@ -26,13 +26,12 @@
     @include('layouts.nav')
     <div id="content-wrapper">
       <div class="container-fluid">
-        <!-- Breadcrumbs-->
         @include('layouts.breadcrumb')
         <div class="row">
-            <div class="col-xl-3 col-sm-6 mb-3">
-        @yield('main-content')
+          <div class="col-xl-5 col-sm-6 mb-3 container-fluid">
+            @yield('main-content')
+          </div>
         </div>
-      </div>
 
       </div>
       @include('layouts.footer')
