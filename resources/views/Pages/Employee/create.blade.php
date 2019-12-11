@@ -9,7 +9,7 @@
                     <h3 class="box-title">Employee Registration Form</h3>
                 </div>
 
-                {{ Form::open(array('url' => route('users.store'),'enctype'=>'multipart/form-data' ))}}
+                {{ Form::open(array('url' => route('employees.store'),'enctype'=>'multipart/form-data' ))}}
                 @csrf
                 <div class="box-body">
                     <div class="form-group">
@@ -32,7 +32,7 @@
                         {{ Form::text('alt_email','',['class'=>'form-control','placeholder'=>'Email Address']) }}
                     </div>
 
-                      <div class="form-group">
+                    <div class="form-group">
                         {{ Form::label('dob', 'Date Of Birth') }}
                         {{Form::date('dob','',['class'=>'form-control'])}}
                     </div>
@@ -83,11 +83,7 @@
                     </div>
 
                     <div class="form-group">
-<<<<<<< HEAD
-                        <label for="exampleInputFile">Upload Image</label>
-=======
                         <label for="exampleInputFile">Upload Image*</label>
->>>>>>> migrations
                         {!! Form::file('logo', ['ref' => 'file', 'id' => 'file'])!!}
                         <p class="help-block">Example block-level help text here.</p>
                     </div>
@@ -117,7 +113,7 @@
                         {{ Form::text('appointment','',['class'=>'form-control','placeholder'=>'Name here']) }}
                     </div>
 
-                    
+
 
                     <div class="checkbox">
                         <label>
