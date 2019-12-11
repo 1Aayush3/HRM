@@ -23,14 +23,15 @@ class formValidation extends FormRequest
      */
     public function rules()
     {
-        return [
-            'name'=>'required',
+        $V= [
+            'name'=>'required|regex:/^[a-zA-Z]+$/u|max:55|unique:users,name,'.$user->id,
             'email'=>'required|unique:users,email',
             'gender'=>'required|in:M,N,O',
-            'password'=>'required',
+            'password'=>'required|min:8',
+            'password_confirm' => 'required|same:password',
             'alt_email'=>'unique:users',
-            'dob'=>'required|date',
-            'joined'=>'required|date',
+            'dob'=>'required|date|date_format:Y-m-d|before:today',
+            'joined'=>'required|date_format:Y-m-d|after:today',
             'left'=>'sometimes|date',
             'phone'=>'required',
             'review'=>'sometimes|date',
@@ -48,5 +49,8 @@ class formValidation extends FormRequest
             'appointment'=>'sometimes|mimes:pdf'
              
         ];
+        
+        $V['password']
+        return $V
     }
 }
