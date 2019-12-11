@@ -1,4 +1,4 @@
-<ul class="sidebar navbar-nav " style=" background: linear-gradient(rgb(6,32,97)30%, rgb(167,175,202)100%);">
+<ul class="sidebar navbar-nav " style=" background: linear-gradient(#F09819,#659999);">
   <li class="nav-item active">
     <a class="nav-link" href="javascript:;">
       <i class="fas fa-fw fa-tachometer-alt"></i>
