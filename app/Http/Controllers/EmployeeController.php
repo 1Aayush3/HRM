@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\formValidation;
+use Intervention\Image\Facades\Image;
 
 class EmployeeController extends Controller
 {
@@ -85,6 +86,8 @@ class EmployeeController extends Controller
             $user-> update([
                 'image'=> request()->image->store('image','public'),
             ]);
+            $image= Image::make(public_path('storage/'.$user->image))->fit(300,300);
+            $image->save();
         }
         if (request()->has('cit_img')){
             $user-> update([
