@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers;
+
 use DB;
 use App\User;
 use App\Designation;
@@ -44,7 +45,7 @@ class EmployeeController extends Controller
     {
         $designation = Designation::pluck('name','id');
         return View('Pages.Employee.edit')
-            ->with('User', $User)->with('designation',$designation);
+            ->with('User', $User)->with('designation', $designation);
     }
 
     public function update(Request $request, $id)
