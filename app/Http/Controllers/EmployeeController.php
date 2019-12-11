@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers;
+
 use DB;
 use App\User;
 use App\Designation;
@@ -12,19 +13,19 @@ use Intervention\Image\Facades\Image;
 class EmployeeController extends Controller
 {
     public function index()
-    {   
+    {
         $des= Designation::all();
         $users = User::with(['users'])->pluck('name', 'email', 'designation_id');
-        return View('Pages.Employee.index',compact('users','des'));
+        return View('Pages.Employee.index', compact('users', 'des'));
     }
 
     public function create()
     {
-        $des = Designation::pluck('designation','id');
-        return View('Pages.Employee.create',compact('des'));
+        $des = Designation::pluck('designation', 'id');
+        return View('Pages.Employee.create', compact('des'));
     }
 
-    public function store(Request $request)
+    public function store(formValidation $request)
     {
         $request->merge(['password' => Hash::make($request->get('password'))]);
         $user = User::create($request->all());
@@ -34,17 +35,17 @@ class EmployeeController extends Controller
     }
 
     public function show($id)
-    {            
+    {
         $user = User::find($id);
-        $des =  Designation::where('id',$user->designation_id)->pluck('designation');
+        $des =  Designation::where('id', $user->designation_id)->pluck('designation');
         return View('Pages.Employee.show');
     }
 
     public function edit($id)
     {
-        $designation = Designation::pluck('name','id');
+        $designation = Designation::pluck('name', 'id');
         return View('Pages.Employee.edit')
-            ->with('User', $User)->with('designation',$designation);
+            ->with('User', $User)->with('designation', $designation);
     }
 
     public function update(Request $request, $id)
@@ -82,37 +83,37 @@ class EmployeeController extends Controller
 
     public function storeImage($user)
     {
-        if (request()->has('image')){
+        if (request()->has('image')) {
             $user-> update([
-                'image'=> request()->image->store('image','public'),
+                'image'=> request()->image->store('image', 'public'),
             ]);
-            $image= Image::make(public_path('storage/'.$user->image))->fit(300,300);
+            $image= Image::make(public_path('storage/'.$user->image))->fit(300, 300);
             $image->save();
         }
-        if (request()->has('cit_img')){
+        if (request()->has('cit_img')) {
             $user-> update([
-                'cit_img'=> request()->cit_img->store('cit_img','public'),
+                'cit_img'=> request()->cit_img->store('cit_img', 'public'),
             ]);
         }
-        if (request()->has('citizenship')){
+        if (request()->has('citizenship')) {
             $user-> update([
-                'citizenship'=> request()->citizenship->store('citizenship','public'),
+                'citizenship'=> request()->citizenship->store('citizenship', 'public'),
             ]);
         }
-        if (request()->has('pan_img')){
+        if (request()->has('pan_img')) {
             $user-> update([
-                'pan_img'=> request()->pan_img->store('pan_img','public'),
+                'pan_img'=> request()->pan_img->store('pan_img', 'public'),
             ]);
         }
-        if (request()->has('contract')){
+        if (request()->has('contract')) {
             $user-> update([
-                'contract'=> request()->contract->store('appointment','public'),
+                'contract'=> request()->contract->store('appointment', 'public'),
             ]);
         }
-        if (request()->has('appointment')){
+        if (request()->has('appointment')) {
             $user-> update([
-                'appointment'=> request()->appointment->store('appointment','public'),
-            ]); 
+                'appointment'=> request()->appointment->store('appointment', 'public'),
+            ]);
         }
     }
 }
