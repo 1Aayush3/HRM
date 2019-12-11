@@ -30,7 +30,7 @@ class EmployeeController extends Controller
         $request->merge(['password' => Hash::make($request->get('password'))]);
         $user = User::create($request->all());
         $this->storeImage($user);
-        Session::flash('message', 'Employee registered sucessfully!');
+        // Session::flash('message', 'Employee registered sucessfully!');
         return Redirect()->route('Pages.Employee.index');
     }
 

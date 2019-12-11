@@ -23,34 +23,31 @@ class formValidation extends FormRequest
      */
     public function rules()
     {
-        $V= [
-            'name'=>'required|regex:/^[a-zA-Z]+$/u|max:55|unique:users,name,'.$user->id,
-            'email'=>'required|unique:users,email',
-            'gender'=>'required|in:M,N,O',
-            'password'=>'required|min:8',
-            'password_confirm' => 'required|same:password',
-            'alt_email'=>'unique:users',
-            'dob'=>'required|date|date_format:Y-m-d|before:today',
-            'joined'=>'required|date_format:Y-m-d|after:today',
-            'left'=>'sometimes|date',
-            'phone'=>'required',
-            'review'=>'sometimes|date',
-            'designation_id'=>'required',
-            'pan'=>'required',
-            'cit'=>'required',
-            'bank'=>'required',
-            'acc'=>'required|unique:users,acc',
-            'branch'=>'required',
-            'image'=>'sometimes|image',
-            'cit_img'=>'sometimes|image',
-            'citizenship'=>'sometimes|image',
-            'pan_img'=>'sometimes|image',
-            'contract'=>'sometimes|mimes:pdf',
-            'appointment'=>'sometimes|mimes:pdf'
+        return [
+            'name'=>'required|regex:/^[a-zA-Z]+$/u|max:55',
+            // 'email'=>'required|unique:users,email',
+            // 'gender'=>'required|in:M,N,O',
+            // 'password'=>'required|min:8',
+            // 'password_confirm' => 'required|same:password',
+            // 'alt_email'=>'unique:users',
+            // 'dob'=>'required|date|date_format:Y-m-d|before:today',
+            // 'joined'=>'required|date_format:Y-m-d|after:today',
+            // 'left'=>'sometimes|date',
+            // 'phone'=>'required',
+            // 'review'=>'sometimes|date',
+            // 'designation_id'=>'required',
+            // 'pan'=>'required',
+            // 'cit'=>'required',
+            // 'bank'=>'required',
+            // 'acc'=>'required|unique:users,acc',
+            // 'branch'=>'required',
+            // 'image'=>'sometimes|image',
+            // 'cit_img'=>'sometimes|image',
+            // 'citizenship'=>'sometimes|image',
+            // 'pan_img'=>'sometimes|image',
+            // 'contract'=>'sometimes|mimes:pdf',
+            // 'appointment'=>'sometimes|mimes:pdf'
              
         ];
-        
-        $V['password']
-        return $V
     }
 }
