@@ -1,11 +1,13 @@
 <div class="form-group">
     {{ Form::label('name', 'Name') }}
     {{ Form::text('name','',['class'=>'form-control','placeholder'=>'Name here','required'=>'required']) }}
+
 </div>
 
 <div class="form-group">
     {{ Form::label('email', 'Email') }}
     {{ Form::text('email','example@gmail.com',['class'=>'form-control','placeholder'=>'Email Address','required'=>'required']) }}
+
 </div>
 
 <div class="form-group">
@@ -80,7 +82,7 @@
 
 <div class="form-group">
     <label for="exampleInputFile">Upload Image</label>
-    {!! Form::file('image', ['ref' => 'file'])!!}}
+    {!! Form::file('image', ['ref' => 'file'])!!}
 </div>
 
 <div class="form-group">

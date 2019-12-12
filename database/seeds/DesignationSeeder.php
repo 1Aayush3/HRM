@@ -11,8 +11,10 @@ class DesignationSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('designation')->insert(
-            ['designation' => 'Intern']
-        );
+        DB::table('designations')->delete();
+        $designation=['Senior Developer','Mid-Level Developer','Junior Developer','Intern'];
+        foreach($designation as $des){
+            DB::table('designations')->insert(['designation'=>$des]);
+        }
     }
 }

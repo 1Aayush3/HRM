@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Designation extends Migration
+class Designations extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,7 @@ class Designation extends Migration
      */
     public function up()
     {
-        Schema::create('designation', function (Blueprint $table) {
-        $table->engine = 'InnoDB';
+        Schema::create('designations', function (Blueprint $table) {
         $table->bigIncrements('id');
         $table->string('designation');
         });

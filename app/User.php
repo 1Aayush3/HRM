@@ -38,4 +38,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function designation()
+    {
+        return $this->belongsTo('App\Designation');//second parameter is foreign key
+    }
 }

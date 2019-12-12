@@ -1,7 +1,6 @@
 @extends('layouts.index')
 @section('title', 'Registration')
 @section('main-content')
-
 {{ Form::open(array('url' => route('employees.store'),'method'=>'POST','enctype'=>'multipart/form-data'))}}
 @csrf
 <div class="box-body">
