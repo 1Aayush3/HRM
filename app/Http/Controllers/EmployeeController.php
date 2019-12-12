@@ -83,37 +83,40 @@ class EmployeeController extends Controller
 
     public function storeImage($user)
     {
-        if (request()->has('image')) {
-            $user-> update([
-                'image'=> request()->image->store('image', 'public'),
-            ]);
-            $image= Image::make(public_path('storage/'.$user->image))->fit(300, 300);
-            $image->save();
+        $fields=['image','cit_image','citizenship','pan_img','contract','appointment'];
+        foreach ($fields as $field) {
+            if (request()->has($field)) {
+                $user-> update([
+                    $field=> request()->{$field}->store($field, 'public'),
+                ]);
+                $image= Image::make(public_path('storage/'.$user->{$field}))->fit(300, 300);
+                $image->save();
+            }
         }
-        if (request()->has('cit_img')) {
-            $user-> update([
-                'cit_img'=> request()->cit_img->store('cit_img', 'public'),
-            ]);
-        }
-        if (request()->has('citizenship')) {
-            $user-> update([
-                'citizenship'=> request()->citizenship->store('citizenship', 'public'),
-            ]);
-        }
-        if (request()->has('pan_img')) {
-            $user-> update([
-                'pan_img'=> request()->pan_img->store('pan_img', 'public'),
-            ]);
-        }
-        if (request()->has('contract')) {
-            $user-> update([
-                'contract'=> request()->contract->store('appointment', 'public'),
-            ]);
-        }
-        if (request()->has('appointment')) {
-            $user-> update([
-                'appointment'=> request()->appointment->store('appointment', 'public'),
-            ]);
-        }
+        // if (request()->has('cit_img')){
+        //     $user-> update([
+        //         'cit_img'=> request()->cit_img->store('cit_img','public'),
+        //     ]);
+        // }
+        // if (request()->has('citizenship')){
+        //     $user-> update([
+        //         'citizenship'=> request()->citizenship->store('citizenship','public'),
+        //     ]);
+        // }
+        // if (request()->has('pan_img')){
+        //     $user-> update([
+        //         'pan_img'=> request()->pan_img->store('pan_img','public'),
+        //     ]);
+        // }
+        // if (request()->has('contract')){
+        //     $user-> update([
+        //         'contract'=> request()->contract->store('appointment','public'),
+        //     ]);
+        // }
+        // if (request()->has('appointment')){
+        //     $user-> update([
+        //         'appointment'=> request()->appointment->store('appointment','public'),
+        //     ]);
+        // }
     }
 }
