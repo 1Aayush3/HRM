@@ -31,7 +31,7 @@ class EmployeeController extends Controller
         $user = User::create($request->all());
         $this->storeImage($user);
         // Session::flash('message', 'Employee registered sucessfully!');
-        return Redirect()->route('Pages.Employee.index');
+        return Redirect()->route('Pages.Employee.index')->withSuccess('Great! Form successfully submit with validation.');
     }
 
     public function show($id)
