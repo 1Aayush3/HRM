@@ -34,17 +34,15 @@ class EmployeeController extends Controller
 
     public function show($id)
     {            
-        $user = User::where('id', $id)->whereNotIn('password')->get();
-        // $user = $user->except(['password']);
-        dd($user);
-        return View('Pages.Employee.show');
+        $user = User::Find($id);
+        return View('Pages.Employee.show',compact('user'));
     }
 
     public function edit($id)
     {
-        $designation = Designation::pluck('name','id');
-        return View('Pages.Employee.edit')
-        ->with('User', $User)->with('designation', $designation);
+        $user = User::with(['designation'])->find($id);
+        $des = Designation::pluck('designation','id');
+        return View('Pages.Employee.edit',compact('user','des'));
     }
 
     public function update(Request $request, $id)
@@ -63,15 +61,15 @@ class EmployeeController extends Controller
         $id= $user->id;
         $fields=['image','cit_img','citizenship','pan_img','contract','appointment'];
         foreach($fields as $field){
-        if (request()->has($field)){
-            $user-> update([
-                $field=> request()
-                ->{$field}
-                ->storeAs('Profile'.$id,$field.".".request()->{$field}->getClientOriginalExtension(),'public'),
-            ]);
-            $image= Image::make(public_path('storage/'.$user->{$field}))->fit(300,300);
-            $image->save();
-        }
+            if (request()->has($field)){
+                $user-> update([
+                    $field=> request()
+                    ->{$field}
+                    ->storeAs('Profile'.$id,$field.".".request()->{$field}->getClientOriginalExtension(),'public'),
+                ]);
+                $image= Image::make(public_path('storage/'.$user->{$field}))->fit(300,300);
+                $image->save();
+            }
         }
     }
     
