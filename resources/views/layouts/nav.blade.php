@@ -12,8 +12,8 @@
       <span>Employee</span>
     </a>
     <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-      <a class="dropdown-item" href="login.html">List</a>
-      <a class="dropdown-item" href="register.html">Register</a>
+    <a class="dropdown-item" href="{{route('employees.index')}}">List</a>
+      <a class="dropdown-item" href="{{route('employees.create')}}">Register</a>
     </div>
   </li>
 
