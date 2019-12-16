@@ -53,8 +53,9 @@ class EmployeeController extends Controller
 
     public function destroy($id)
     {
-        User::find($id)->delete();
-        return redirect()->route('Pages.Employee.index');
+        $user = User::find($id);
+        $user->delete();
+        return redirect()->route('employees.index');
     }
 
     public function storeImage($user)

@@ -154,18 +154,14 @@
                                     </div>
                                     <!-- /.user-block -->
                                     <p>
-                                        Lorem ipsum represents a long-held tradition for designers,
-                                        typographers and the like. Some people hate it and argue for
-                                        its demise, but others ignore the hate as they create awesome
-                                        tools to help create filler text for everyone from bacon lovers
-                                        to Charlie Sheen fans.
+                                        "Leave Applied Reason"
                                     </p>
 
                                     <form class="form-horizontal">
                                         <div class="input-group input-group-sm mb-0">
                                             <input class="form-control form-control-sm" placeholder="Response">
                                             <div class="input-group-append">
-                                                <button type="submit" class="btn btn-danger">Send</button>
+                                                <button type="submit" class="btn btn-danger">Accept</button>
                                             </div>
                                         </div>
                                     </form>
