@@ -9,6 +9,7 @@
   <meta name="author"="">
   <title>@if(View::hasSection('title')) @yield('title') @else {{ 'Proshore' }} @endif</title>
   <!-- Bootstrap CSS-->
+  {{-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> --}}
   <link href="{{asset('js/vendor/bootstrap/css/bootstrap.css')}}" rel="stylesheet">
   <!-- css for font-awesome-->
   <link href="{{asset('js/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -18,8 +19,16 @@
   <link href="{{asset('css/dashboard.css')}}" rel="stylesheet">
   <!-- Custom styles for dashboard-->
   <link href="{{asset('js/vendor/bootstrap/css/change.css')}}" rel="stylesheet">
-
+  <!-- AdminLte -->
+  {{-- <link rel="stylesheet" href="{{asset('css/adminlte.min.css')}}"> --}}
+  <!-- Theme style -->
+  {{-- <link rel="stylesheet" href="{{asset('css/dist/css/adminlte.min.css')}}"> --}}
+  <!-- Ionicons -->
+  {{-- <link href="{{asset('https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css')}}" rel="stylesheet">
+  --}}
+  <!-- Jquery -->
   <script src="{{asset('js/vendor/jquery/jquery.min.js')}}"></script>
+
 </head>
 
 <body id="page-top">
@@ -36,19 +45,17 @@
         </div>
       </div>
       {{-- @include('layouts.footer') --}}
-       <!-- Scroll to Top Button-->
-       
+      <!-- Scroll to Top Button-->
+      <a class="scroll-to-top rounded sticky" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+      </a>
     </div>
   </div>
-  <a class="scroll-to-top rounded sticky" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
-
-
+ 
   @include('layouts.logoutModal')
   @stack('page-script')
+  {{-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script> --}}
   <!-- Bootstrap core JavaScript-->
-
   <script src="{{asset('js/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
   <!-- Core plugin JavaScript-->
   <script src="{{asset('js/vendor/jquery-easing/jquery.easing.min.js')}}"></script>

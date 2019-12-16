@@ -34,7 +34,8 @@ class EmployeeController extends Controller
 
     public function show($id)
     {            
-        $user = User::Find($id);
+        $user = User::with(['designation'])->Find($id);
+        // dd($user);
         return View('Pages.Employee.show',compact('user'));
     }
 
@@ -49,7 +50,15 @@ class EmployeeController extends Controller
     {
         $data = $request->all();
         unset($data["_method"], $data["_token"],$data["password"]);
-        User::find($id)->update($data);
+        $arrays = array_keys($data,null);
+        foreach($arrays as $array){
+            unset($data[$array]);
+        }
+        $update = User::find($id);
+        // dd($update);
+        $user= $update->update($data);
+        $user= $update;
+        $this->storeImage($user);
        return redirect()->route('employees.index');
     }
 
@@ -61,6 +70,7 @@ class EmployeeController extends Controller
 
     public function storeImage($user)
     {
+        // dd($user);
         $id= $user->id;
         $fields=['image','cit_img','citizenship','pan_img','contract','appointment'];
         foreach($fields as $field){
