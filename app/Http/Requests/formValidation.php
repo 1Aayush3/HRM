@@ -6,21 +6,11 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class formValidation extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
     public function authorize()
     {
         return true;
     }
-
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
+    
     public function rules()
     {
         return [
@@ -32,7 +22,7 @@ class formValidation extends FormRequest
             'dob'=>'required|date|date_format:Y-m-d|before:today',
             'joined'=>'required|date_format:Y-m-d|before_or_equal:date|after:dob',
             'left'=>'sometimes|date|date_format:Y-m-d|before_or_equal:date|after:joined',
-            'phone'=>'required|unique:users|max:20|required|regex:/(01)[0-9]{9}/',
+            // 'phone'=>'required|unique:users|max:20|required|regex:/(01)[0-9]{9}/',
             'review'=>'sometimes|date',
             'designation_id'=>'required',
             'pan'=>'required|min:5|max:55',
