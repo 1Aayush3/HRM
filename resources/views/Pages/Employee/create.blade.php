@@ -9,7 +9,7 @@
 </div>
 <div class="box-footer">
     <div class="card">
-        <div class="card-footer text-center mt-0">
+        <div class="card-header text-center mt-0">
             <div class="card-title text-center mb-0">
                 <div class="checkbox">
                     <label>

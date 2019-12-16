@@ -29,7 +29,7 @@ class EmployeeController extends Controller
         ]);
         $user = User::create($request->all());
         $this->storeImage($user);
-        return Redirect()->view('Pages.Employee.index');
+        return Redirect()->route('employees.index');
     }
 
     public function show($id)
@@ -47,13 +47,16 @@ class EmployeeController extends Controller
 
     public function update(Request $request, $id)
     {
-       //
+        $data = $request->all();
+        unset($data["_method"], $data["_token"],$data["password"]);
+        User::find($id)->update($data);
+       return redirect()->route('employees.index');
     }
 
     public function destroy($id)
     {
         User::find($id)->delete();
-        return redirect()->route('Pages.Employee.index');
+        return redirect()->route('employees.index');
     }
 
     public function storeImage($user)

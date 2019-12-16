@@ -26,7 +26,7 @@
   @include('layouts.header')
   <div id="wrapper">
     @include('layouts.nav')
-    <div id="content-wrapper">
+    <div id="content-wrapper" style="padding-bottom:0px">
       <div class="container-fluid ">
         @include('layouts.breadcrumb')
         <div class="row">
@@ -34,15 +34,17 @@
             @yield('main-content')
           </div>
         </div>
-
       </div>
-      @include('layouts.footer')
+      {{-- @include('layouts.footer') --}}
+       <!-- Scroll to Top Button-->
+       
     </div>
   </div>
-  <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded" href="#page-top">
+  <a class="scroll-to-top rounded sticky" href="#page-top">
     <i class="fas fa-angle-up"></i>
   </a>
+
+
   @include('layouts.logoutModal')
   @stack('page-script')
   <!-- Bootstrap core JavaScript-->

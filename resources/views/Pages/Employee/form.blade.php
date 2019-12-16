@@ -1,6 +1,6 @@
 <div class="card-columns m-auto p-3">
-    <div class="card" id="card-general-info">
-        <div class="card-header text-center">General</div>
+    <div class="card mb-4" id="card-general-info">
+        <div class="card-header text-center" style="background: #d1d4d4;">General</div>
         <div class="card-body pb-0">
             <div class="form-group">
                 {{ Form::label('name', 'Name') }}
@@ -16,7 +16,7 @@
             </div>
             <div class="form-group" id="password">
                 {{ Form::label('password', 'Password') }}
-                {{ Form::password('password',['class'=>'form-control','placeholder'=>'Password','required'=>'required']) }}
+                {{ Form::password('password',['class'=>'form-control','placeholder'=>'Password']) }}
             </div>
             <div class="form-group">
                 {{ Form::label('dob', 'Date Of Birth') }}
@@ -34,7 +34,7 @@
         </div>
     </div>
     <div class="card" id="card-office-info">
-        <div class="card-header text-center">Dates</div>
+        <div class="card-header text-center" style="background: #d1d4d4;">Dates</div>
         <div class="card-body pb-0">
             <div class="form-group">
                 {{ Form::label('designation_id', 'Designation') }}
@@ -55,7 +55,7 @@
         </div>
     </div>
     <div class="card" id="card-official-info">
-        <div class="card-header text-center">Official InFo</div>
+        <div class="card-header text-center" style="background: #d1d4d4;">Official InFo</div>
         <div class="card-body pb-0">
             <div class="form-group">
                 {{ Form::label('bank', 'Bank') }}
@@ -80,7 +80,7 @@
         </div>
     </div>
     <div class="card" id="card-image-upload">
-        <div class="card-header text-center">Uploads</div>
+        <div class="card-header text-center" style="background:#d1d4d4;">Uploads</div>
         <div class="card-body pb-0">
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -88,7 +88,7 @@
                 </div>
                 <div class="custom-file">
                     {!! Form::file('image', ['ref'
-                    =>'file','class'=>'custom-file-input','id'=>'profile-image','aria-describedby'=>'profile-image'])!!}
+                    =>'file','class'=>'custom-file-input','id'=>'profile-image','accept'=>'image/*','aria-describedby'=>'profile-image'])!!}
                     <label class="custom-file-label" for="profile-image">Choose file</label>
                 </div>
             </div>
@@ -98,12 +98,12 @@
                 </div>
                 <div class="custom-file">
                     {!! Form::file('cit_img', ['ref' => 'file',
-                    'class'=>'custom-file-input','id'=>'cit-image','aria-describedby'=>'cit-image'])!!}
+                    'class'=>'custom-file-input','id'=>'cit-image','accept'=>'image/*','aria-describedby'=>'cit-image'])!!}
                     <label class="custom-file-label" for="cit-image">Choose file</label>
                 </div>
             </div>
             <div class="input-group mb-3">
-                <div class="input-group-prepend">
+                <div class="input-group-prepend ">
                     <span class="input-group-text" id="citizenship-image">Citizenship</span>
                 </div>
                 <div class="custom-file">
