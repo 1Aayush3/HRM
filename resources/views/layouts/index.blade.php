@@ -9,7 +9,6 @@
   <meta name="author"="">
   <title>@if(View::hasSection('title')) @yield('title') @else {{ 'Proshore' }} @endif</title>
   <!-- Bootstrap CSS-->
-  {{-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> --}}
   <link href="{{asset('js/vendor/bootstrap/css/bootstrap.css')}}" rel="stylesheet">
   <!-- css for font-awesome-->
   <link href="{{asset('js/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -19,6 +18,8 @@
   <link href="{{asset('css/dashboard.css')}}" rel="stylesheet">
   <!-- Custom styles for dashboard-->
   <link href="{{asset('js/vendor/bootstrap/css/change.css')}}" rel="stylesheet">
+  <!-- Custom styles for this template-->
+  <link href="{{asset('css/sb-admin.css')}}" rel="stylesheet">
   <!-- AdminLte -->
   {{-- <link rel="stylesheet" href="{{asset('css/adminlte.min.css')}}"> --}}
   <!-- Theme style -->
@@ -28,7 +29,6 @@
   --}}
   <!-- Jquery -->
   <script src="{{asset('js/vendor/jquery/jquery.min.js')}}"></script>
-
 </head>
 
 <body id="page-top">
@@ -37,6 +37,7 @@
     @include('layouts.nav')
     <div id="content-wrapper" style="padding-bottom:0px">
       <div class="container-fluid ">
+        @include('layouts.message')
         @include('layouts.breadcrumb')
         <div class="row">
           <div class="col-12">
@@ -51,16 +52,24 @@
       </a>
     </div>
   </div>
- 
   @include('layouts.logoutModal')
+  <script src="{{asset('js/vendor/chart.js/Chart.min.js')}}"></script>
   @stack('page-script')
-  {{-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script> --}}
+  <!-- Message timer-->
+  <script>
+    $(document).ready(function () {
+      $('.toast').toast('show');
+    });
+    setTimeout(() => {
+      $('div.customMsg').hide('slow');
+    }, 3000);
+  </script>
   <!-- Bootstrap core JavaScript-->
   <script src="{{asset('js/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
   <!-- Core plugin JavaScript-->
   <script src="{{asset('js/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
   <!-- Page level plugin JavaScript-->
-  <script src="{{asset('js/vendor/chart.js/Chart.min.js')}}"></script>
+ 
   <script src="{{asset('js/vendor/datatables/jquery.dataTables.js')}}"></script>
   <script src="{{asset('js/vendor/datatables/dataTables.bootstrap4.js')}}"></script>
   <!-- Custom scripts for all pages-->
@@ -68,6 +77,10 @@
   <!-- Demo scripts for this page-->
   <script src="{{asset('js/demo/datatables-demo.js')}}"></script>
   <script src="{{asset('js/demo/chart-area-demo.js')}}"></script>
+  <script src="{{asset('js/demo/chart-bar-demo.js')}}"></script>
+  <script src="{{asset('js/demo/chart-pie-demo.js')}}"></script>
+  <!-- Custom scripts for all pages-->
+  <script src="{{asset('js/sb-admin.min.js')}}"></script>
 </body>
 
 </html>

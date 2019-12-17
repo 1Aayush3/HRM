@@ -2,7 +2,7 @@
 @section('title', 'Employees List')
 @section('main-content')
 <div class="card-body">
-    <table id="example" class="table table-striped table-bordered" style="width:100%" examclass="table table-hover">
+    <table id="dataTable" class="table table-striped table-bordered" style="width:100%" examclass="table table-hover">
         <thead>
             <tr>
                 <th>ID</th>
@@ -14,7 +14,7 @@
         </thead>
         <tbody>
             @foreach($users as $key=>$user )
-            <tr style="font-weight:500;">
+            <tr style="font-weight:400;">
                 <td>{{$key +1}}</td>
                 <td>{{$user->name}}</td>
                 <td>{{$user->email}}</td>
@@ -55,7 +55,7 @@
 @push('page-script')
 <script>
     $('document').ready(function(){
-    $('#example').DataTable( {"columnDefs": [
+    $('#dataTable').DataTable( {"columnDefs": [
     { "orderable": false, "targets": 4 }]});
 })
 </script>

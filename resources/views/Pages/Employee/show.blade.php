@@ -1,5 +1,5 @@
 @extends('layouts.index')
-@section('title', 'Registration')
+@section('title', 'Details')
 @section('main-content')
 <div class="container-fluid">
     <div class="col-md-8">
@@ -52,13 +52,12 @@
 
                     <li class="list-group-item  d-flex justify-content-center ">
                         <form method="get" action="{{route('employees.edit',$user->id)}}">
-                            <button class="btn btn btn-primary" type="submit">
+                            <button class="btn btn btn-primary mr-1 fa" id='edit' type="submit">
                                 Edit
-                            </button>|
+                            </button>
                         </form>
-
                         <form method="get" action="{{route('employees.index')}}">
-                            <button class="btn btn btn-primary" type="submit">
+                            <button class="btn btn btn-primary mr-1 fa" id='back' type="submit">
                                 Back
                             </button>
                         </form>

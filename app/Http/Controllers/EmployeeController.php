@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\formValidation;
 use Intervention\Image\Facades\Image;
+use Session;
 
 class EmployeeController extends Controller
 {
@@ -29,6 +30,7 @@ class EmployeeController extends Controller
         ]);
         $user = User::create($request->all());
         $this->storeImage($user);
+        Session::flash('message', 'Employee registered sucessfully!');
         return Redirect()->route('employees.index');
     }
 
@@ -59,12 +61,14 @@ class EmployeeController extends Controller
         $user= $update->update($data);
         $user= $update;
         $this->storeImage($user);
+        Session::flash('message', 'Changes saved sucessfully!');
        return redirect()->route('employees.index');
     }
 
     public function destroy($id)
     {
         User::find($id)->delete();
+        Session::flash('message', 'Employee Terminated!');
         return redirect()->route('employees.index');
     }
 
@@ -84,6 +88,5 @@ class EmployeeController extends Controller
                 $image->save();
             }
         }
-    }
-    
+    }    
 }
