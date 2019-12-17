@@ -18,11 +18,11 @@
 @endsection
 @push('page-script')
 <script>
-    $('document').ready(function() {
-    console.log( "ready!" );
-    setTimeout(() => {
-        $('#password').fadeOut('slow')
-    }, 1000);
-    });
+    // $('document').ready(function() {
+    // var a = $('#password').removeAttr('required');
+    // setTimeout(() => {
+    //     a.fadeOut('slow');
+    // }, 1000);
+    // });
 </script>
 @endpush

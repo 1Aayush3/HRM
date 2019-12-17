@@ -14,7 +14,7 @@ class formValidation extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|min:3|max:30|regex:/^[\pL\s\-]+$/u',
+            'name'=>'required|min:5|max:30|regex:/^[\pL\s\-]+$/u',
             'email'=>'required|email|unique:users,email',
             'gender'=>'required|in:M,F,O',
             'password'=>'required|min:8',
@@ -22,8 +22,8 @@ class formValidation extends FormRequest
             'dob'=>'required|date|date_format:Y-m-d|before:today',
             'joined'=>'required|date_format:Y-m-d|before_or_equal:date|after:dob',
             'left'=>'sometimes|date|date_format:Y-m-d|before_or_equal:date|after:joined',
-            // 'phone'=>'required|unique:users|max:20|required|regex:/(01)[0-9]{9}/',
-            'review'=>'sometimes|date',
+            'phone'=>'required|min:9|numeric',
+            'review'=>'sometimes|date|after:joined|before:left',
             'designation_id'=>'required',
             'pan'=>'required|min:5|max:55',
             'cit'=>'required|min:5|max:55',
@@ -31,9 +31,9 @@ class formValidation extends FormRequest
             'acc'=>'required|unique:users,acc',
             'branch'=>'required|regex:/^[\pL\s\-]+$/u',
             'image'=>'sometimes|image',
-            'cit_img'=>'sometimes|image|mimes:pdf,jpeg,jpg,png,gif',
-            'citizenship'=>'sometimes|image',
-            'pan_img'=>'sometimes|image',
+            'cit_img'=>'sometimes|image|mimes:pdf',
+            'citizenship'=>'sometimes|image|mimes:pdf',
+            'pan_img'=>'sometimes|image|mimes:pdf',
             'contract'=>'sometimes|mimes:pdf',
             'appointment'=>'sometimes|mimes:pdf'
              

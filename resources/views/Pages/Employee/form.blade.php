@@ -1,6 +1,6 @@
 <div class="card-columns m-auto p-3">
-    <div class="card" id="card-general-info">
-        <div class="card-header text-center">General</div>
+    <div class="card mb-4" id="card-general-info">
+        <div class="card-header text-center" style="background: #d1d4d4;">General</div>
         <div class="card-body pb-0">
             <div class="form-group{{ $errors->has('name') ? 'has-error' : ''}}">
                 {{ Form::label('name', 'Name') }}
@@ -26,13 +26,13 @@
             </div>
             <div class="form-group{{ $errors->has('password') ? 'has-error' : ''}}" id="password">
                 {{ Form::label('password', 'Password') }}
-                {{ Form::password('password',['class'=>'form-control','placeholder'=>'Password','required'=>'required']) }}
+                {{ Form::password('password',['class'=>'form-control','placeholder'=>'Password']) }}
                 <small style="color:red;">{!! $errors->first('password', '<p class="help-block">:message</p>')
                     !!}</small>
             </div>
             <div class="form-group{{ $errors->has('dob') ? 'has-error' : ''}}">
                 {{ Form::label('dob', 'Date Of Birth') }}
-                {{Form::date('dob',null,['class'=>'form-control'])}}
+                {{Form::date('dob',null,['class'=>'form-control','id'=>'txtDob'])}}
                 <small style="color:red;">{!! $errors->first('dob', '<p class="help-block">:message</p>') !!}</small>
             </div>
             <div class="form-group{{ $errors->has('gender') ? 'has-error' : ''}}">
@@ -48,7 +48,7 @@
         </div>
     </div>
     <div class="card" id="card-office-info">
-        <div class="card-header text-center">Dates</div>
+        <div class="card-header text-center" style="background: #d1d4d4;">Dates</div>
         <div class="card-body pb-0">
             <div class="form-group{{ $errors->has('designation_id') ? 'has-error' : ''}}">
                 {{ Form::label('designation_id', 'Designation') }}
@@ -58,23 +58,23 @@
             </div>
             <div class="form-group{{ $errors->has('joined') ? 'has-error' : ''}}">
                 {{ Form::label('joined', 'Joined Date') }}
-                {{ Form::date('joined',null,['class'=>'form-control','required'=>'required']) }}
+                {{ Form::date('joined',null,['class'=>'form-control','id'=>'txtStartDate','required'=>'required']) }}
                 <small style="color:red;">{!! $errors->first('joined', '<p class="help-block">:message</p>') !!}</small>
             </div>
             <div class="form-group{{ $errors->has('left') ? 'has-error' : ''}}">
                 {{ Form::label('left', 'Left Date') }}
-                {{ Form::date('left',null,['class'=>'form-control']) }}
+                {{ Form::date('left',null,['class'=>'form-control','id'=>'txtEndDate']) }}
                 <small style="color:red;">{!! $errors->first('left', '<p class="help-block">:message</p>') !!}</small>
             </div>
             <div class="form-group{{ $errors->has('review') ? 'has-error' : ''}}">
                 {{ Form::label('review', 'Review Date') }}
-                {{ Form::date('review',null,['class'=>'form-control'])}}
+                {{ Form::date('review',null,['class'=>'form-control','id'=>'txtReviewDate'])}}
                 <small style="color:red;">{!! $errors->first('review', '<p class="help-block">:message</p>') !!}</small>
             </div>
         </div>
     </div>
     <div class="card" id="card-official-info">
-        <div class="card-header text-center">Official InFo</div>
+        <div class="card-header text-center" style="background: #d1d4d4;">Official InFo</div>
         <div class="card-body pb-0">
             <div class="form-group{{ $errors->has('bank') ? 'has-error' : ''}}">
                 {{ Form::label('bank', 'Bank') }}
@@ -104,7 +104,7 @@
         </div>
     </div>
     <div class="card" id="card-image-upload">
-        <div class="card-header text-center">Uploads</div>
+        <div class="card-header text-center" style="background:#d1d4d4;">Uploads</div>
         <div class="card-body pb-0">
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -112,7 +112,7 @@
                 </div>
                 <div class="custom-file{{ $errors->has('image') ? 'has-error' : ''}}">
                     {!! Form::file('image', ['ref'
-                    =>'file','class'=>'custom-file-input','id'=>'profile-image','aria-describedby'=>'profile-image'])!!}
+                    =>'file','class'=>'custom-file-input','id'=>'profile-image','accept'=>'image/*','aria-describedby'=>'profile-image'])!!}
                     <label class="custom-file-label" for="profile-image">Choose file</label>
                     <small style="color:red;">{!! $errors->first('image', '<p class="help-block">:message</p>')
                         !!}</small>
@@ -124,14 +124,14 @@
                 </div>
                 <div class="custom-file{{ $errors->has('cit_img') ? 'has-error' : ''}}">
                     {!! Form::file('cit_img', ['ref' => 'file',
-                    'class'=>'custom-file-input','id'=>'cit-image','aria-describedby'=>'cit-image'])!!}
+                    'class'=>'custom-file-input','id'=>'cit-image','accept'=>'image/*','aria-describedby'=>'cit-image'])!!}
                     <label class="custom-file-label" for="cit-image">Choose file</label>
                     <small style="color:red;">{!! $errors->first('cit_img', '<p class="help-block">:message</p>')
                         !!}</small>
                 </div>
             </div>
             <div class="input-group mb-3">
-                <div class="input-group-prepend">
+                <div class="input-group-prepend ">
                     <span class="input-group-text" id="citizenship-image">Citizenship</span>
                 </div>
                 <div class="custom-file{{ $errors->has('citizenship') ? 'has-error' : ''}}">
