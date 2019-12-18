@@ -1,7 +1,7 @@
 <div class="card-columns m-auto p-3">
     <div class="card mb-5" id="card-general-info">
         <div class="card-header text-center" style="background: #d1d4d4;">General</div>
-        <div class="card-body   -0">
+        <div class="card-body mb-0">
             <div class="form-group">
                 {{ Form::label('name', 'Name') }}
                 {{ Form::text('name',null,['class'=>'form-control','placeholder'=>'Name here','required'=>'required']) }}

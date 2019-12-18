@@ -57,7 +57,6 @@ class EmployeeController extends Controller
             unset($data[$array]);
         }
         $update = User::find($id);
-        // dd($update);
         $user= $update->update($data);
         $user= $update;
         $this->storeImage($user);

@@ -47,7 +47,7 @@
       </div>
       {{-- @include('layouts.footer') --}}
       <!-- Scroll to Top Button-->
-      <a class="scroll-to-top rounded sticky" href="#page-top">
+      <a class="scroll-to-top rounded sticky" href="#page-top" style="z-index:99">
         <i class="fas fa-angle-up"></i>
       </a>
     </div>
@@ -69,7 +69,7 @@
   <!-- Core plugin JavaScript-->
   <script src="{{asset('js/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
   <!-- Page level plugin JavaScript-->
- 
+
   <script src="{{asset('js/vendor/datatables/jquery.dataTables.js')}}"></script>
   <script src="{{asset('js/vendor/datatables/dataTables.bootstrap4.js')}}"></script>
   <!-- Custom scripts for all pages-->

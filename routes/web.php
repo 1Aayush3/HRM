@@ -5,6 +5,7 @@ Route::resource('dashboard', 'DashboardController');
 Auth::routes(['register' => false]);
 Route::get('/home', 'HomeController@index')->name('home');
 Route:: get('/profile',function(){
-    return View('Pages.front.profile');
+    $user = Designation::Find(1);
+    return View('Pages.front.index',compact('user'));
 });
 ?>
