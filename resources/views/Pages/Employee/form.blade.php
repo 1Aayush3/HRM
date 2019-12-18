@@ -48,7 +48,7 @@
         </div>
     </div>
     <div class="card" id="card-office-info">
-        <div class="card-header text-center" style="background: #d1d4d4;">Dates</div>
+        <div class="card-header text-center" style="background: #d1d4d4;">Official Info</div>
         <div class="card-body pb-0">
             <div class="form-group{{ $errors->has('designation_id') ? 'has-error' : ''}}">
                 {{ Form::label('designation_id', 'Designation') }}
@@ -74,7 +74,7 @@
         </div>
     </div>
     <div class="card mb-5" id="card-official-info">
-        <div class="card-header text-center" style="background: #d1d4d4;">Official InFo</div>
+        <div class="card-header text-center" style="background: #d1d4d4;">Personal InFo</div>
         <div class="card-body pb-0">
             <div class="form-group{{ $errors->has('bank') ? 'has-error' : ''}}">
                 {{ Form::label('bank', 'Bank') }}

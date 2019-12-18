@@ -49,7 +49,7 @@
       </div>
       {{-- @include('layouts.footer') --}}
       <!-- Scroll to Top Button-->
-      <a class="scroll-to-top rounded sticky" href="#page-top">
+      <a class="scroll-to-top rounded sticky" href="#page-top" style="z-index:99;">
         <i class="fas fa-angle-up"></i>
       </a>
     </div>
