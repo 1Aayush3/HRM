@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\formValidation;
 use Intervention\Image\Facades\Image;
+use Session;
 
 class EmployeeController extends Controller
 {
@@ -30,12 +31,14 @@ class EmployeeController extends Controller
         ]);
         $user = User::create($request->all());
         $this->storeImage($user);
+        Session::flash('message', 'Employee registered sucessfully!');
         return Redirect()->route('employees.index');
     }
 
     public function show($id)
     {
-        $user = User::Find($id);
+        $user = User::with(['designation'])->Find($id);
+        // dd($user);
         return View('Pages.Employee.show', compact('user'));
     }
 
@@ -50,18 +53,29 @@ class EmployeeController extends Controller
     {
         $data = $request->all();
         unset($data["_method"], $data["_token"],$data["password"]);
-        User::find($id)->update($data);
+        $arrays = array_keys($data, null);
+        foreach ($arrays as $array) {
+            unset($data[$array]);
+        }
+        $update = User::find($id);
+        // dd($update);
+        $user= $update->update($data);
+        $user= $update;
+        $this->storeImage($user);
+        Session::flash('message', 'Changes saved sucessfully!');
         return redirect()->route('employees.index');
     }
 
     public function destroy($id)
     {
         User::find($id)->delete();
+        Session::flash('message', 'Employee Terminated!');
         return redirect()->route('employees.index');
     }
 
     public function storeImage($user)
     {
+        // dd($user);
         $id= $user->id;
         $fields=['image','cit_img','citizenship','pan_img','contract','appointment'];
         foreach ($fields as $field) {

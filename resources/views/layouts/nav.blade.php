@@ -1,6 +1,6 @@
 <ul class="sidebar navbar-nav " style=" background: linear-gradient(#F09819,#659999);">
   <li class="nav-item active">
-    <a class="nav-link" href="javascript:;">
+    <a class="nav-link" href="{{route('dashboard.index')}}">
       <i class="fas fa-fw fa-tachometer-alt"></i>
       <span>Dashboard</span>
     </a>

@@ -1,5 +1,5 @@
 <div class="card-columns m-auto p-3">
-    <div class="card mb-4" id="card-general-info">
+    <div class="card mb-5" id="card-general-info">
         <div class="card-header text-center" style="background: #d1d4d4;">General</div>
         <div class="card-body pb-0">
             <div class="form-group{{ $errors->has('name') ? 'has-error' : ''}}">
@@ -73,7 +73,7 @@
             </div>
         </div>
     </div>
-    <div class="card" id="card-official-info">
+    <div class="card mb-5" id="card-official-info">
         <div class="card-header text-center" style="background: #d1d4d4;">Official InFo</div>
         <div class="card-body pb-0">
             <div class="form-group{{ $errors->has('bank') ? 'has-error' : ''}}">

@@ -1,8 +1,9 @@
 <?php
 Route::get('/', 'EmployeeController@create');
 Route::resource('employees', 'EmployeeController');
+Route::resource('dashboard', 'DashboardController');
 Auth::routes(['register' => false]);
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/details', function () {
-    return view('Pages.front.profile');
+Route:: get('/profile', function () {
+    return View('Pages.front.profile');
 });
