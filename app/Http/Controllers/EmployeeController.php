@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers;
+
 use DB;
 use App\User;
 use App\Designation;
@@ -13,15 +14,15 @@ use Session;
 class EmployeeController extends Controller
 {
     public function index()
-    {   
-        $users = User::with(['designation'])->select('id','name', 'email', 'designation_id')->get();
-        return View('Pages.Employee.index',compact('users'));
+    {
+        $users = User::with(['designation'])->select('id', 'name', 'email', 'designation_id')->get();
+        return View('Pages.Employee.index', compact('users'));
     }
 
     public function create()
     {
-        $des = Designation::pluck('designation','id');
-        return View('Pages.Employee.create',compact('des'));
+        $des = Designation::pluck('designation', 'id');
+        return View('Pages.Employee.create', compact('des'));
     }
 
     public function store(formValidation $request)
@@ -35,25 +36,25 @@ class EmployeeController extends Controller
     }
 
     public function show($id)
-    {            
+    {
         $user = User::with(['designation'])->Find($id);
         // dd($user);
-        return View('Pages.Employee.show',compact('user'));
+        return View('Pages.Employee.show', compact('user'));
     }
 
     public function edit($id)
     {
         $user = User::with(['designation'])->find($id);
-        $des = Designation::pluck('designation','id');
-        return View('Pages.Employee.edit',compact('user','des'));
+        $des = Designation::pluck('designation', 'id');
+        return View('Pages.Employee.edit', compact('user', 'des'));
     }
 
     public function update(Request $request, $id)
     {
         $data = $request->all();
         unset($data["_method"], $data["_token"],$data["password"]);
-        $arrays = array_keys($data,null);
-        foreach($arrays as $array){
+        $arrays = array_keys($data, null);
+        foreach ($arrays as $array) {
             unset($data[$array]);
         }
         $update = User::find($id);
@@ -61,7 +62,7 @@ class EmployeeController extends Controller
         $user= $update;
         $this->storeImage($user);
         Session::flash('message', 'Changes saved sucessfully!');
-       return redirect()->route('employees.index');
+        return redirect()->route('employees.index');
     }
 
     public function destroy($id)
@@ -76,16 +77,16 @@ class EmployeeController extends Controller
         // dd($user);
         $id= $user->id;
         $fields=['image','cit_img','citizenship','pan_img','contract','appointment'];
-        foreach($fields as $field){
-            if (request()->has($field)){
+        foreach ($fields as $field) {
+            if (request()->has($field)) {
                 $user-> update([
                     $field=> request()
                     ->{$field}
-                    ->storeAs('Profile'.$id,$field.".".request()->{$field}->getClientOriginalExtension(),'public'),
+                    ->storeAs('Profile'.$id, $field.".".request()->{$field}->getClientOriginalExtension(), 'public'),
                 ]);
-                $image= Image::make(public_path('storage/'.$user->{$field}))->fit(300,300);
+                $image= Image::make(public_path('storage/'.$user->{$field}))->fit(300, 300);
                 $image->save();
             }
         }
-    }    
+    }
 }

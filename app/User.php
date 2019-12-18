@@ -20,6 +20,13 @@ class User extends Authenticatable
         'review','designation_id','pan','cit','bank','acc','branch','image','cit_img',
         'citizenship','pan_img','contract','appointment'
     ];
+    // public $dates = ['created_at', 'updated_at', 'date'];
+
+    // public function setDateAttribute($date)
+    // {
+    //     $this->attributes['date'] = Carbon::createFromFormat('d/m/Y', $date);
+    // }
+
 
     /**
      * The attributes that should be hidden for arrays.

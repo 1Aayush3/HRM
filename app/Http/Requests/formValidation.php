@@ -6,46 +6,37 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class formValidation extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
     public function authorize()
     {
         return true;
     }
-
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
+    
     public function rules()
     {
         return [
-            'name'=>'required',
-            // 'email'=>'required|unique:users,email',
-            // 'gender'=>'required|in:M,N,O',
-            // 'password'=>'required',
-            // 'alt_email'=>'unique:users',
-            // 'dob'=>'required|date',
-            // 'joined'=>'required|date',
-            // 'left'=>'sometimes|date',
-            // 'phone'=>'required',
-            // 'review'=>'sometimes|date',
-            // 'designation_id'=>'required',
-            // 'pan'=>'required',
-            // 'cit'=>'required',
-            // 'bank'=>'required',
-            // 'acc'=>'required|unique:users,acc',
-            // 'branch'=>'required',
-            // 'image'=>'sometimes|image',
-            // 'cit_img'=>'sometimes|image',
-            // 'citizenship'=>'sometimes|image',
-            // 'pan_img'=>'sometimes|image',
-            // 'contract'=>'sometimes|mimes:pdf',
-            // 'appointment'=>'sometimes|mimes:pdf'
+            'name'=>'required|min:5|max:30|regex:/^[\pL\s\-]+$/u',
+            'email'=>'required|email|unique:users,email',
+            'gender'=>'required|in:M,F,O',
+            'password'=>'required|min:8',
+            'alt_email'=>'sometimes|email|unique:users',
+            'dob'=>'required|date|date_format:Y-m-d|before:today',
+            'joined'=>'required|date_format:Y-m-d|before_or_equal:date|after:dob',
+            'left'=>'sometimes|after:joined|nullable',
+            'phone'=>'sometimes|nullable|digits_between:9,15',
+            'review'=>'sometimes|nullable|after:joined',
+            'designation_id'=>'required',
+            'pan'=>'sometimes|digits_between:1,10|unique:users,pan',
+            'cit'=>'sometimes|digits_between:1,10|unique:users,cit',
+            'bank'=>'sometimes|max:55|regex:/^[\pL\s\-]+$/u',
+            'acc'=>'sometimes|digits_between:1,20|unique:users,acc',
+            'branch'=>'sometimes|regex:/^[\pL\s\-]+$/u',
+            'image'=>'sometimes|image',
+            'cit_img'=>'sometimes|image|mimes:pdf',
+            'citizenship'=>'sometimes|image|mimes:pdf',
+            'pan_img'=>'sometimes|image|mimes:pdf',
+            'contract'=>'sometimes|mimes:pdf',
+            'appointment'=>'sometimes|mimes:pdf'
+             
         ];
     }
 }

@@ -8,16 +8,13 @@
   <meta name="description" content="">
   <meta name="author"="">
   <title>@if(View::hasSection('title')) @yield('title') @else {{ 'Proshore' }} @endif</title>
-  <!-- Bootstrap CSS-->
   <link href="{{asset('js/vendor/bootstrap/css/bootstrap.css')}}" rel="stylesheet">
-  <!-- css for font-awesome-->
   <link href="{{asset('js/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
-  <!-- CSS for datatables-->
   <link href="{{asset('js/vendor/datatables/dataTables.bootstrap4.css')}}" rel="stylesheet">
-  <!-- Custom styles for dashboard-->
   <link href="{{asset('css/dashboard.css')}}" rel="stylesheet">
-  <!-- Custom styles for dashboard-->
   <link href="{{asset('js/vendor/bootstrap/css/change.css')}}" rel="stylesheet">
+  <link rel="stylesheet" href="{{asset('css/errors.css')}}">
+
   <!-- Custom styles for this template-->
   <link href="{{asset('css/sb-admin.css')}}" rel="stylesheet">
   <!-- AdminLte -->
@@ -29,6 +26,8 @@
   --}}
   <!-- Jquery -->
   <script src="{{asset('js/vendor/jquery/jquery.min.js')}}"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
 </head>
 
 <body id="page-top">
@@ -44,10 +43,13 @@
             @yield('main-content')
           </div>
         </div>
+        {{-- @include('layouts.footer') --}}
+        <!-- Scroll to Top Button-->
+
       </div>
       {{-- @include('layouts.footer') --}}
       <!-- Scroll to Top Button-->
-      <a class="scroll-to-top rounded sticky" href="#page-top" style="z-index:99">
+      <a class="scroll-to-top rounded sticky" href="#page-top" style="z-index:99;">
         <i class="fas fa-angle-up"></i>
       </a>
     </div>
