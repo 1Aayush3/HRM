@@ -6,7 +6,6 @@ function canSubmit() {
     }
 }
 $(document).ready(function () {
-
     var isAfterStartDate = function (txtStartDate, txtEndDate) {
         var startDate = new Date(txtStartDate);
         var endDate = new Date(txtEndDate);
@@ -68,7 +67,6 @@ $(document).ready(function () {
                 },
                 review: {
                     date: true,
-
                 },
                 bank: {
                     lettersonly: true,
@@ -85,8 +83,6 @@ $(document).ready(function () {
                 pan: {
                     number: true
                 },
-
-
             },
             messages: {
 

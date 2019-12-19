@@ -27,9 +27,11 @@ class EmployeeController extends Controller
 
     public function store(formValidation $request)
     {
+        // dd($request->all());
+
         $request->merge(['password' => Hash::make($request->get('password')),
         ]);
-        $user = User::create($request->all());
+        $user = User::create($request->validated());
         $this->storeImage($user);
         Session::flash('message', 'Employee registered sucessfully!');
         return Redirect()->route('employees.index');
@@ -49,16 +51,19 @@ class EmployeeController extends Controller
         return View('Pages.Employee.edit', compact('user', 'des'));
     }
 
-    public function update(formValidation $request, User $user)
+    public function update(formValidation $request,$id)
     {
+        // dd($request->all());
+
         $data = $request->all();
+        // dd(($data));
         unset($data["_method"], $data["_token"],$data["password"]);
         $arrays = array_keys($data, null);
         foreach ($arrays as $array) {
             unset($data[$array]);
         }
+        // dd($data);
         $update = User::find($id);
-        // dd($update);
         $user= $update->update($data);
         $user= $update;
         $this->storeImage($user);

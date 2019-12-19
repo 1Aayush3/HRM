@@ -5,12 +5,12 @@
 
 
             <div class="form-group{{ $errors->has('name') ? 'has-error' : ''}}">
-                {{ Form::label('name', 'Name') }}
+                {{ Form::label('name', 'Name *') }}
                 {{ Form::text('name',null,['class'=>'form-control','placeholder'=>'Name here','required'=>'required']) }}
                 <small style="color:red;">{!! $errors->first('name', '<p class="help-block">:message</p>') !!}</small>
             </div>
             <div class="form-group{{ $errors->has('email') ? 'has-error' : ''}}">
-                {{ Form::label('email', 'Email') }}
+                {{ Form::label('email', 'Email *') }}
                 {{ Form::text('email',null,['class'=>'form-control','placeholder'=>'Email Address','required'=>'required']) }}
                 <small style="color:red;">{!! $errors->first('email', '<p class="help-block">:message</p>') !!}</small>
             </div>
@@ -27,18 +27,18 @@
                     !!}</small>
             </div>
             <div class="form-group{{ $errors->has('password') ? 'has-error' : ''}}" id="password">
-                {{ Form::label('password', 'Password') }}
+                {{ Form::label('password', 'Password *') }}
                 {{ Form::password('password',['class'=>'form-control','placeholder'=>'Password']) }}
                 <small style="color:red;">{!! $errors->first('password', '<p class="help-block">:message</p>')
                     !!}</small>
             </div>
             <div class="form-group{{ $errors->has('dob') ? 'has-error' : ''}}">
-                {{ Form::label('dob', 'Date Of Birth') }}
+                {{ Form::label('dob', 'Date Of Birth *') }}
                 {{Form::date('dob',null,['class'=>'form-control','id'=>'txtDob'])}}
                 <small style="color:red;">{!! $errors->first('dob', '<p class="help-block">:message</p>') !!}</small>
             </div>
             <div class="form-group{{ $errors->has('gender') ? 'has-error' : ''}}">
-                <b> Gender:</b>
+                Gender * :
                 {{ Form::radio('gender', 'M',true)}}
                 {{ Form::label('gender', 'Male') }}
                 {!! Form::radio('gender', 'F') !!}
@@ -53,13 +53,13 @@
         <div class="card-header text-center" style="background: #d1d4d4;">Official Info</div>
         <div class="card-body pb-0">
             <div class="form-group{{ $errors->has('designation_id') ? 'has-error' : ''}}">
-                {{ Form::label('designation_id', 'Designation') }}
+                {{ Form::label('designation_id', 'Designation *') }}
                 {{Form::select('designation_id',$des, null, ['class'=>'form-control','placeholder' => 'Pick'])}}
                 <small style="color:red;">{!! $errors->first('designation_id', '<p class="help-block">:message</p>')
                     !!}</small>
             </div>
             <div class="form-group{{ $errors->has('joined') ? 'has-error' : ''}}">
-                {{ Form::label('joined', 'Joined Date') }}
+                {{ Form::label('joined', 'Joined Date *') }}
                 {{ Form::date('joined',null,['class'=>'form-control','id'=>'txtStartDate','required'=>'required']) }}
                 <small style="color:red;">{!! $errors->first('joined', '<p class="help-block">:message</p>') !!}</small>
             </div>
