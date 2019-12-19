@@ -15,7 +15,7 @@ class Employees extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->string('alt_email', 60)->unique()->after('email');
+            $table->string('alt_email', 60)->nullable()->unique()->after('email');
             $table->string('phone', 30)->nullable()->after('alt_email');
             $table->enum('gender', ['M','F','O'])->after('password');
             $table->date('dob')->after('password');
