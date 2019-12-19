@@ -15,7 +15,7 @@ class AddDesignationForeign extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->bigInteger('designation_id')->unsigned()->nullable()->after('dob');
-            $table->foreign('designation_id')->references('id')->on('designation')->onDelete('cascade');
+            $table->foreign('designation_id')->references('id')->on('designations')->onDelete('cascade');
         });
     }
 

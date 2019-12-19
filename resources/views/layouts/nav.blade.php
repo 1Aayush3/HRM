@@ -1,6 +1,6 @@
-<ul class="sidebar navbar-nav " style=" background: linear-gradient(rgb(6,32,97)30%, rgb(167,175,202)100%);">
+<ul class="sidebar navbar-nav " style=" background: linear-gradient(#F09819,#659999);">
   <li class="nav-item active">
-    <a class="nav-link" href="javascript:;">
+    <a class="nav-link" href="{{route('dashboard.index')}}">
       <i class="fas fa-fw fa-tachometer-alt"></i>
       <span>Dashboard</span>
     </a>
@@ -12,8 +12,8 @@
       <span>Employee</span>
     </a>
     <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-      <a class="dropdown-item" href="login.html">List</a>
-      <a class="dropdown-item" href="register.html">Register</a>
+    <a class="dropdown-item" href="{{route('employees.index')}}">List</a>
+      <a class="dropdown-item" href="{{route('employees.create')}}">Register</a>
     </div>
   </li>
 

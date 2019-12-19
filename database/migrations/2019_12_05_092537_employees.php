@@ -15,17 +15,18 @@ class Employees extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->string('alt_email',50)->unique()->after('email');
-            $table->enum('gender',['M','F','O'])->after('password');
+            $table->string('alt_email', 60)->unique()->after('email');
+            $table->string('phone', 30)->nullable()->after('alt_email');
+            $table->enum('gender', ['M','F','O'])->after('password');
             $table->date('dob')->after('password');
             $table->date('joined')->after('dob');
             $table->date('left')->nullable()->after('joined');
             $table->date('review')->nullable()->after('left');
-            $table->string('acc',25)->unique()->after('review');
-            $table->string('bank')->after('acc');
-            $table->string('branch')->after('bank');
-            $table->string('pan')->after('branch');
-            $table->string('cit',15)->after('pan');
+            $table->string('acc')->nullable()->unique()->after('review');
+            $table->string('bank')->nullable()->after('acc');
+            $table->string('branch')->nullable()->after('bank');
+            $table->string('pan')->nullable()->after('branch');
+            $table->string('cit')->nullable()->after('pan');
             $table->string('image')->nullable()->after('cit');
             $table->string('citizenship')->nullable()->after('image');
             $table->string('cit_img')->nullable()->after('citizenship');
