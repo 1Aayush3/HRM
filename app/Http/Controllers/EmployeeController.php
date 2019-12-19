@@ -49,7 +49,7 @@ class EmployeeController extends Controller
         return View('Pages.Employee.edit', compact('user', 'des'));
     }
 
-    public function update(Request $request, $id)
+    public function update(formValidation $request, User $user)
     {
         $data = $request->all();
         unset($data["_method"], $data["_token"],$data["password"]);

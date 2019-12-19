@@ -2,6 +2,8 @@
     <div class="card mb-5" id="card-general-info">
         <div class="card-header text-center" style="background: #d1d4d4;">General</div>
         <div class="card-body pb-0">
+
+
             <div class="form-group{{ $errors->has('name') ? 'has-error' : ''}}">
                 {{ Form::label('name', 'Name') }}
                 {{ Form::text('name',null,['class'=>'form-control','placeholder'=>'Name here','required'=>'required']) }}
