@@ -14,6 +14,7 @@
   <link href="{{asset('css/dashboard.css')}}" rel="stylesheet">
   <link href="{{asset('js/vendor/bootstrap/css/change.css')}}" rel="stylesheet">
   <link rel="stylesheet" href="{{asset('css/errors.css')}}">
+  
 
   <!-- Custom styles for this template-->
   <link href="{{asset('css/sb-admin.css')}}" rel="stylesheet">
@@ -22,8 +23,8 @@
   <!-- Theme style -->
   {{-- <link rel="stylesheet" href="{{asset('css/dist/css/adminlte.min.css')}}"> --}}
   <!-- Ionicons -->
-  {{-- <link href="{{asset('https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css')}}" rel="stylesheet">
-  --}}
+  <link href="{{asset('https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css')}}" rel="stylesheet">
+ 
   <!-- Jquery -->
   <script src="{{asset('js/vendor/jquery/jquery.min.js')}}"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

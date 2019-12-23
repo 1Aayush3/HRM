@@ -1,10 +1,9 @@
 <?php
 Route::get('/', 'EmployeeController@create');
 Route::resource('employees', 'EmployeeController');
+Route::resource('users', 'UserController');
 Route::resource('dashboard', 'DashboardController');
 Auth::routes(['register' => false]);
 Route::get('/home', 'HomeController@index')->name('home');
-Route:: get('/profile',function(){
-    $user = Designation::Find(1);
-    return View('Pages.front.index',compact('user'));
-});
+Route::post('/import', 'ImportController@import')->name('import');
+// Route::get('/send/email/{id}', [ 'as' => 'mail', 'uses' => 'MailController@mail']);

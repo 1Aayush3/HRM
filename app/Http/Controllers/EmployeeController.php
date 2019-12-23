@@ -53,16 +53,12 @@ class EmployeeController extends Controller
 
     public function update(formValidation $request,$id)
     {
-        // dd($request->all());
-
         $data = $request->all();
-        // dd(($data));
         unset($data["_method"], $data["_token"],$data["password"]);
         $arrays = array_keys($data, null);
         foreach ($arrays as $array) {
             unset($data[$array]);
         }
-        // dd($data);
         $update = User::find($id);
         $user= $update->update($data);
         $user= $update;
@@ -80,7 +76,6 @@ class EmployeeController extends Controller
 
     public function storeImage($user)
     {
-        // dd($user);
         $id= $user->id;
         $fields=['image','cit_img','citizenship','pan_img','contract','appointment'];
         foreach ($fields as $field) {
