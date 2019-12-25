@@ -39,11 +39,11 @@
             </div>
             <div class="form-group{{ $errors->has('gender') ? 'has-error' : ''}}">
                 Gender * :
-                {{ Form::radio('gender', 'M',true)}}
+                {{ Form::radio('gender', 'Male',true)}}
                 {{ Form::label('gender', 'Male') }}
-                {!! Form::radio('gender', 'F') !!}
+                {!! Form::radio('gender', 'Female') !!}
                 {!! Form::label('gender', 'Female') !!}
-                {!! Form::radio('gender', 'O') !!}
+                {!! Form::radio('gender', 'Others') !!}
                 {!! Form::label('gender', 'Others') !!}
                 <small style="color:red;">{!! $errors->first('gender', '<p class="help-block">:message</p>') !!}</small>
             </div>
@@ -79,13 +79,13 @@
         <div class="card-header text-center" style="background: #d1d4d4;">Personal InFo</div>
         <div class="card-body pb-0">
             <div class="form-group{{ $errors->has('bank') ? 'has-error' : ''}}">
-                {{ Form::label('bank', 'Bank') }}
+                {{ Form::label('bank', 'Bank Name') }}
                 {{ Form::text('bank',null,['class'=>'form-control','placeholder'=>'Bank Name']) }}
                 <small style="color:red;">{!! $errors->first('bank', '<p class="help-block">:message</p>') !!}</small>
             </div>
             <div class="form-group{{ $errors->has('branch') ? 'has-error' : ''}}">
                 {{ Form::label('branch', 'Bank Branch') }}
-                {{ Form::text('branch',null,['class'=>'form-control','placeholder'=>'Branch']) }}
+                {{ Form::text('branch',null,['class'=>'form-control','placeholder'=>'Bank Branch']) }}
                 <small style="color:red;">{!! $errors->first('branch', '<p class="help-block">:message</p>') !!}</small>
             </div>
             <div class="form-group{{ $errors->has('acc') ? 'has-error' : ''}}">
@@ -110,7 +110,7 @@
         <div class="card-body pb-0">
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text" id="profile-image">Profile</span>
+                    <span class="input-group-text" id="profile-image">Image</span>
                 </div>
                 <div class="custom-file{{ $errors->has('image') ? 'has-error' : ''}}">
                     {!! Form::file('image', ['ref'
@@ -164,8 +164,7 @@
                     {!! Form::file('contract', ['ref' =>
                     'file','class'=>'custom-file-input','id'=>'contract-image','aria-describedby'=>'contract-image'])!!}
                     <label class="custom-file-label" for="contract-image">Choose file</label>
-                    <small style="color:red;">{!! $errors->first('contract', '<p class="help-block">:message</p>')
-                        !!}</small>
+                    <small id="error" style="color:red;"></small>
                 </div>
             </div>
             <div class="input-group mb-3">

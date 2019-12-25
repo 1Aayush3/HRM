@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Designations extends Migration
+class GenderChangetoFullform extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class Designations extends Migration
      */
     public function up()
     {
-        Schema::create('designations', function (Blueprint $table) {
-        $table->bigIncrements('id');
-        $table->string('designation');
-        $table->timestamps();
+               
+        Schema::table('users', function(Blueprint $table)
+        {
+            DB::statement("ALTER TABLE users MODIFY COLUMN gender ENUM('male', 'female', 'others') NOT NULL DEFAULT 'Others'");
         });
     }
 
@@ -27,6 +27,8 @@ class Designations extends Migration
      */
     public function down()
     {
-        Schema::drop('designation');
+        Schema::table('users', function (Blueprint $table) {
+            //
+        });
     }
 }

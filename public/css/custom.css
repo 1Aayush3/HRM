@@ -1,0 +1,17 @@
+.list-group-item button#editbtn {
+    padding-right: 0px;
+}
+
+.list-group-item input#userphone {
+    max-width: 7rem;
+}
+
+.list-group-item input#userphone {
+    outline: none;
+}
+
+.list-group-item input.error {
+    /* red auto 1px !important; */
+    outline: red auto 1px !important;
+    ;
+}

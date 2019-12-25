@@ -27,11 +27,9 @@ class EmployeeController extends Controller
 
     public function store(formValidation $request)
     {
-        // dd($request->all());
-
         $request->merge(['password' => Hash::make($request->get('password')),
         ]);
-        $user = User::create($request->validated());
+        $user = User::create($request->all());
         $this->storeImage($user);
         Session::flash('message', 'Employee registered sucessfully!');
         return Redirect()->route('employees.index');
@@ -40,7 +38,6 @@ class EmployeeController extends Controller
     public function show($id)
     {
         $user = User::with(['designation'])->Find($id);
-        // dd($user);
         return View('Pages.Employee.show', compact('user'));
     }
 

@@ -14,7 +14,7 @@ class formValidation extends FormRequest
         return [
             'name'=>'required|min:5|max:30|regex:/^[\pL\s\-]+$/u',
             'email'=>'required|email|unique:users,email,'.$this->employee,
-            'gender'=>'required|in:M,F,O',
+            'gender'=>'required|in:Male,Female,Others',
             'dob'=>'required|date|date_format:Y-m-d|before:today',
             'joined'=>'required|date_format:Y-m-d|before_or_equal:date|after:dob',
             'password'=>'required_unless:_method,PUT|min:8|max:20|nullable',

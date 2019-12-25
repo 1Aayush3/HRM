@@ -3,19 +3,19 @@ namespace App\Imports;
 
 use App\User;
 use Illuminate\Support\Facades\Hash;
-use Maatwebsite\Excel\Concerns\ToCollection;
+use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 // use Maatwebsite\Excel\Concerns\WithEvents;
 // use Illuminate\Contracts\Queue\ShouldQueue;
 // use Maatwebsite\Excel\Concerns\WithChunkReading;
 
-class UserImport implements ToCollection,withHeadingRow
+class UserImport implements ToModel,withHeadingRow
 // ,WithChunkReading,ShouldQueue, WithEvents
 {
-    public function collection(array $row)
+    public function model(array $row)
     {
         dd($row);
-        if (!isset($row[0])) {
+        if (!isset($row['password'])) {
             return null;
         }
         return new User([

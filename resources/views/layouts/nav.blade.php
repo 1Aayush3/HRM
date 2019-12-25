@@ -12,7 +12,7 @@
       <span>Employee</span>
     </a>
     <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-    <a class="dropdown-item" href="{{route('employees.index')}}">List</a>
+      <a class="dropdown-item" href="{{route('employees.index')}}">List</a>
       <a class="dropdown-item" href="{{route('employees.create')}}">Register</a>
     </div>
   </li>
@@ -26,5 +26,10 @@
     <a class="nav-link" href="javascript:;">
       <i class="fas fa-fw fa-table"></i>
       <span>Calender</span></a>
+  </li>
+  <li class="nav-item">
+  <a class="nav-link" href="{{route('settings.index')}}">
+      <i class="fas fa-fw fa-cog"></i>
+      <span>Settings</span></a>
   </li>
 </ul>

@@ -20,8 +20,8 @@
                 <li class="list-group-item">
                     <b>Phone</b>
                     <a class="float-right">
-                        <input id="userphone" type="text" min="10" value="{{$user->phone}} " readonly
-                            style="border: 0px transparent ">
+                        <input id="userphone" class="" type="text" minlength="10" maxlength="14"
+                            value="{{$user->phone}} " readonly style="border: 0px transparent ">
                         <button type="button" class="btn btn-default" id="editbtn"><i class="fas fa-pen"></i>
                         </button>
                         <button type="button" class="btn btn-primary" id="updatephonebtn" hidden><i
@@ -64,28 +64,6 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form id="form" action="{{route('users.update',$user->id)}}">
-                    <label name="phone" for="phone">Enter the number</label>
-                    <input type="text" id="phone" name="phone">
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" id="submit" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-    </div>
-</div>
 @endsection
 @push('page-script')
 <script>
@@ -104,16 +82,19 @@
                     url: "{{ route('users.update',$user->id)}}",
                     type: "PUT",
                     data: {   "_token": "{{ csrf_token() }}",
-                            "phone" : phone
+                            "phone" : phone,
+                            "id" : {{$user->id}}
                     },
                     success: function (data) {
                         console.log(data);
                         $('#userphone').attr('readonly',true);
-                        $('#userphone').attr('style','border: 0px transparent')
+                        $('#userphone').attr('style','border: 0px transparent');
+                        $('#userphone').removeClass('error');
                         $('#editbtn').show();
                         $('#updatephonebtn').attr('hidden',true);
                     } ,
                     error: function (error) {
+                        $('#userphone').addClass('error');
                         console.log(`Error ${error}`);
                     },
                 }

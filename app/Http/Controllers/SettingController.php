@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
+use App\designation;
 use Illuminate\Http\Request;
+use Session;
 
-class UserController extends Controller
+class SettingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user= User::find(1);
-        return view('Pages.front.index',compact('user'));
+        $des=designation::select('designation','id')->get();
+       return view('Pages.Setting.index',compact('des'));
     }
 
     /**
@@ -36,17 +37,22 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
-      
+            $validatedData = $request->validate([
+                'designation'=>'required|min:2|max:40|regex:/^[\pL\s\-]+$/u',
+            ]);
+        $designation = new designation;
+        $designation->designation = $request->get('designation');
+        $designation->save();
+        return response()->json('sucessfully stored',200);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\User  $user
+     * @param  \App\designation  $designation
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(designation $designation)
     {
         //
     }
@@ -54,10 +60,10 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\User  $user
+     * @param  \App\designation  $designation
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(designation $designation)
     {
         //
     }
@@ -66,26 +72,21 @@ class UserController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\User  $user
+     * @param  \App\designation  $designation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, designation $designation)
     {
-        $validatedData = $request->validate([
-            'phone'=>'sometimes|numeric|digits_between:9,15',
-        ]);
-        $user = User::find($request->id)
-        ->update($validatedData);
-        return response()->json("sucess", 200);
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\User  $user
+     * @param  \App\designation  $designation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(designation $designation)
     {
         //
     }

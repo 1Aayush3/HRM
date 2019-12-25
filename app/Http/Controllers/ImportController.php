@@ -21,8 +21,6 @@ class ImportController extends Controller
         $this->validate($request,[
             'file' =>'required|mimes:xls,xlsx'
         ]);
-        // $path= $request->file('file')->getRealPath();
-        // $data= Excel::load($path)->get();
         Excel::import(new UserImport,request()->file('file'));
         return redirect()->route('employees.index')->with('message','Successfuly Data Imported!');
     }
