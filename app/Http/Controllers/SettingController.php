@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\designation;
 use Illuminate\Http\Request;
 use Session;
+use Response;
 
 class SettingController extends Controller
 {
@@ -15,8 +16,16 @@ class SettingController extends Controller
      */
     public function index()
     {
-        $des=designation::select('designation','id')->get();
-       return view('Pages.Setting.index',compact('des'));
+    //     $des=designation::select('designation','id')->get();
+    //    return view('Pages.Setting.index',compact('des'));
+        if(request()->ajax()) {
+            return datatables()->of(designation::select('*'))
+            ->addColumn('action', 'action_button')
+            ->rawColumns(['action'])
+            ->addIndexColumn()
+            ->make(true);
+        }
+        return view('Pages.Setting.index');
     }
 
     /**
@@ -37,13 +46,19 @@ class SettingController extends Controller
      */
     public function store(Request $request)
     {
-            $validatedData = $request->validate([
-                'designation'=>'required|min:2|max:40|regex:/^[\pL\s\-]+$/u',
-            ]);
-        $designation = new designation;
-        $designation->designation = $request->get('designation');
-        $designation->save();
-        return response()->json('sucessfully stored',200);
+        $validatedData = $request->validate([
+            'designation'=>'required|min:2|max:40|unique:designations,designation|regex:/^[\pL\s\-]+$/u',
+        ]);
+
+        $desId = $request->id;
+        $des   =   designation::updateOrCreate(['id' => $desId],
+        ['designation' => $request->designation]);        
+        return Response::json($des);
+        // $designation = new designation;
+        // $designation->designation = $request->get('designation');
+        // $designation->save();
+        // $latest=designation::latest()->first();
+        // return response()->json($latest,200);
     }
 
     /**
@@ -63,10 +78,13 @@ class SettingController extends Controller
      * @param  \App\designation  $designation
      * @return \Illuminate\Http\Response
      */
-    public function edit(designation $designation)
+    public function edit($id)
     {
-        //
+        $where = array('id' => $id);
+        $des  = designation::where($where)->first();
+        return Response::json($des);
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -86,8 +104,11 @@ class SettingController extends Controller
      * @param  \App\designation  $designation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(designation $designation)
+    public function destroy($id)
     {
-        //
+        $des = designation::where('id',$id)->delete();
+        return Response::json($des);
+        // designation::find($id)->delete();
+        // return redirect()->route('settings.index');
     }
 }
