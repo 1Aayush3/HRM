@@ -13,7 +13,9 @@
     </a>
     <div class="dropdown-menu" aria-labelledby="pagesDropdown">
       <a class="dropdown-item" href="{{route('employees.index')}}">List</a>
+      @can('employee-create')
       <a class="dropdown-item" href="{{route('employees.create')}}">Register</a>
+      @endcan
     </div>
   </li>
   <li class="nav-item">
@@ -28,7 +30,7 @@
       <span>Calender</span></a>
   </li>
   <li class="nav-item">
-  <a class="nav-link" href="{{route('settings.index')}}">
+    <a class="nav-link" href="{{route('settings.index')}}">
       <i class="fas fa-fw fa-cog"></i>
       <span>Settings</span></a>
   </li>

@@ -13,6 +13,7 @@
             </tr>
         </thead>
         <tbody>
+
             @foreach($users as $key=>$user )
             <tr style="font-weight:400;">
                 <td>{{$key +1}}</td>
@@ -25,17 +26,19 @@
                         Details
                     </button>
                     {!! Form::close() !!}
-
+                    @can('employee-edit')
                     {!! Form::open(['method' => 'GET', 'url' => route('employees.edit', $user->id)]) !!}
                     <button id='show' type="submit" class="btn btn-primary" style="margin-right:5px;">
                         Edit
                     </button>
                     {!! Form::close() !!}
-
+                    @endcan
+                    @can('employee-delete')
                     {!! Form::open(['method' => 'DELETE', 'url' => route('employees.destroy',$user->id)]) !!}
                     <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-primary">
                         Remove</button>
                     {!! Form::close() !!}
+                    @endcan
                 </td>
             </tr>
             @endforeach

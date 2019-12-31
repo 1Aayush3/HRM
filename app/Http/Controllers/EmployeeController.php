@@ -2,17 +2,26 @@
 namespace App\Http\Controllers;
 
 use DB;
+use Session;
 use App\User;
 use App\Designation;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\formValidation;
 use Intervention\Image\Facades\Image;
-use Session;
+use Illuminate\Support\Facades\Validator;
 
 class EmployeeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:employee-list|employee-create|employee-edit|employee-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:employee-create', ['only' => ['create','store']]);
+        $this->middleware('permission:employee-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:employee-delete', ['only' => ['destroy']]);
+    }
+
     public function index()
     {
         $users = User::with(['designation'])->select('id', 'name', 'email', 'designation_id')->get();
@@ -22,15 +31,17 @@ class EmployeeController extends Controller
     public function create()
     {
         $des = Designation::pluck('designation', 'id');
-        return View('Pages.Employee.create', compact('des'));
+        $roles = Role::pluck('name', 'name')->all();
+        return View('Pages.Employee.create', compact('des', 'roles'));
     }
 
     public function store(formValidation $request)
     {
-        $request->merge(['password' => Hash::make($request->get('password')),
-        ]);
-        $user = User::create($request->all());
+        $input = $request->all();
+        $input['password'] = Hash::make($input['password']);
+        $user = User::create($input);
         $this->storeImage($user);
+        $user->assignRole($request->input('role_id'));
         Session::flash('message', 'Employee registered sucessfully!');
         return Redirect()->route('employees.index');
     }
@@ -45,10 +56,11 @@ class EmployeeController extends Controller
     {
         $user = User::with(['designation'])->find($id);
         $des = Designation::pluck('designation', 'id');
-        return View('Pages.Employee.edit', compact('user', 'des'));
+        $roles = Role::pluck('name', 'name')->all();
+        return View('Pages.Employee.edit', compact('user', 'des', 'roles'));
     }
 
-    public function update(formValidation $request,$id)
+    public function update(formValidation $request, $id)
     {
         $data = $request->all();
         unset($data["_method"], $data["_token"],$data["password"]);
@@ -60,6 +72,8 @@ class EmployeeController extends Controller
         $user= $update->update($data);
         $user= $update;
         $this->storeImage($user);
+        DB::table('model_has_roles')->where('model_id', $id)->delete();
+        $user->assignRole($request->input('roles'));
         Session::flash('message', 'Changes saved sucessfully!');
         return redirect()->route('employees.index');
     }

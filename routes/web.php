@@ -4,6 +4,7 @@ Route::resource('employees', 'EmployeeController');
 Route::resource('users', 'UserController');
 Route::resource('settings', 'SettingController');
 Route::resource('dashboard', 'DashboardController');
+Route::resource('roles', 'RoleController');
 Auth::routes(['register' => false]);
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/import', 'ImportController@import')->name('import');

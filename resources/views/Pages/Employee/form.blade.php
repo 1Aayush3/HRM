@@ -20,6 +20,10 @@
                 <small style="color:red;">{!! $errors->first('phone', '<p class="help-block">:message</p>')
                     !!}</small>
             </div>
+            <div class="form-group">
+                {{ Form::label('role_id', 'Role') }}
+                {{Form::select('role_id',$roles, '', ['class'=>'form-control'])}}
+            </div>
             <div class="form-group{{ $errors->has('alt_email') ? 'has-error' : ''}}">
                 {{ Form::label('alt_email', 'Alternate Email') }}
                 {{ Form::text('alt_email',null,['class'=>'form-control','placeholder'=>'Email Address']) }}
