@@ -23,16 +23,15 @@ class SettingController extends Controller
     }
     public function index()
     {
-        //     $des=designation::select('designation','id')->get();
-        //    return view('Pages.Setting.index',compact('des'));
-        if (request()->ajax()) {
-            return datatables()->of(designation::select('*'))
-            ->addColumn('action', 'action_button')
-            ->rawColumns(['action'])
-            ->addIndexColumn()
-            ->make(true);
-        }
-        return view('Pages.Setting.index');
+        $des=designation::select('designation', 'id')->get();
+        // if(request()->ajax()) {
+        //     return datatables()->of(designation::select('*'))
+        //     ->addColumn('action', 'action_button')
+        //     ->rawColumns(['action'])
+        //     ->addIndexColumn()
+        //     ->make(true);
+        // }
+        return view('Pages.Setting.index', compact('des'));
     }
 
     /**
@@ -62,6 +61,9 @@ class SettingController extends Controller
             ['id' => $desId],
             ['designation' => $request->designation]
         );
+        
+        //
+
         return Response::json($des);
         // $designation = new designation;
         // $designation->designation = $request->get('designation');
@@ -115,9 +117,9 @@ class SettingController extends Controller
      */
     public function destroy($id)
     {
-        $des = designation::where('id', $id)->delete();
-        return Response::json($des);
-        // designation::find($id)->delete();
-        // return redirect()->route('settings.index');
+        // $des = designation::where('id',$id)->delete();
+        // return Response::json($des);
+        designation::find($id)->delete();
+        return redirect()->route('settings.index');
     }
 }
