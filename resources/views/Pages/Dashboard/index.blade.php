@@ -11,6 +11,7 @@
         </div>
         {{-- <div class="card-footer small text-muted">This is Employee pie chart </div> --}}
     </div>
+    @can('role-list')
     <div class="card">
         <div class="card-header" style="background: #d1d4d4;">
             Import Export Excel to database
@@ -28,6 +29,7 @@
             </form>
         </div>
     </div>
+    @endcan
 </div>
 @endsection
 @push('page-script')

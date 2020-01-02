@@ -1,6 +1,7 @@
+@if(Auth::user()->roles[0]['id']== 1)
 <ol class="breadcrumb">
     <li class="breadcrumb-item">
-    <a href="{{route('dashboard.index')}}">Dashboard</a>
+        <a href="{{route('dashboard.index')}}">Dashboard</a>
     </li>
     @if(View::hasSection('title'))
     @if(isset($user->joined))
@@ -18,3 +19,4 @@
     </li>
     @endif
 </ol>
+@endif

@@ -21,10 +21,12 @@
                 <td>{{$user->email}}</td>
                 <td>{{$user->designation->designation}}</td>
                 <td style="display:inline-flex">
+                    @can('employee-list')
                     {!! Form::open(['method' => 'GET', 'url' => route('employees.show', $user->id)]) !!}
                     <button id='show' type="submit" class="btn btn-primary" style="margin-right:5px;">
                         Details
                     </button>
+                    @endcan
                     {!! Form::close() !!}
                     @can('employee-edit')
                     {!! Form::open(['method' => 'GET', 'url' => route('employees.edit', $user->id)]) !!}
