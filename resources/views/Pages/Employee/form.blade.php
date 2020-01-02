@@ -64,7 +64,7 @@
             </div>
             <div class="form-group{{ $errors->has('joined') ? 'has-error' : ''}}">
                 {{ Form::label('joined', 'Joined Date *') }}
-                {{ Form::date('joined',null,['class'=>'form-control','id'=>'txtStartDate','required'=>'required']) }}
+                {{ Form::text('joined',null,['class'=>'form-control','id'=>'txtStartDate','placeholder'=>'mm/dd/yyyy','required'=>'required']) }}
                 <small style="color:red;">{!! $errors->first('joined', '<p class="help-block">:message</p>') !!}</small>
             </div>
             <div class="form-group{{ $errors->has('left') ? 'has-error' : ''}}">
@@ -74,8 +74,9 @@
             </div>
             <div class="form-group{{ $errors->has('review') ? 'has-error' : ''}}">
                 {{ Form::label('review', 'Review Date') }}
-                {{ Form::date('review',null,['class'=>'form-control','id'=>'txtReviewDate'])}}
-                <small style="color:red;">{!! $errors->first('review', '<p class="help-block">:message</p>') !!}</small>
+                {{ Form::text('review',null,['class'=>'form-control','id'=>'txtReviewDate','placeholder'=>'mm/dd/yyyy'])}}
+                <small style="color:red;">{!! $errors->first(' review', '<p class="help-block">:message</p>')
+                    !!}</small>
             </div>
         </div>
     </div>
@@ -188,10 +189,24 @@
 </div>
 @push('page-script')
 <script>
-$(".custom-file-input").on("change", function() {
-    var fileName = $(this).val().split("\\").pop();
-    $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-  });
+    $(".custom-file-input").on("change", function() {
+        var fileName = $(this).val().split("\\").pop();
+        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+    });
+
+    $("#txtStartDate").datepicker({
+
+        dateFormat: "mm/dd/yy",
+        onSelect: function(dateText, instance) {
+            date = $.datepicker.parseDate(instance.settings.dateFormat, dateText, instance.settings);
+            date.setMonth(date.getMonth() + 6);
+            $("#txtReviewDate").datepicker("setDate", date);
+        }
+    });
+
+    $("#txtReviewDate").datepicker({
+        dateFormat: "mm/dd/yy"
+    });
 
 </script>
 @endpush
