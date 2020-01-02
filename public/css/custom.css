@@ -19,3 +19,7 @@ ul#EL {
     text-align: left;
     margin-left: 26vw;
 }
+
+.input-group-text {
+    width: 118px !important;
+}

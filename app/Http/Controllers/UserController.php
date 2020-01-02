@@ -14,8 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user= User::find(1);
-        return view('Pages.front.index',compact('user'));
+        return view('Pages.front.index');
     }
 
     /**

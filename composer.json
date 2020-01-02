@@ -16,6 +16,7 @@
         "laravel/tinker": "^2.0",
         "laravelcollective/html": "^6.0",
         "maatwebsite/excel": "^3.1",
+        "nesbot/carbon": "^2.28",
         "spatie/laravel-permission": "^3.3",
         "twbs/bootstrap": "^4.4"
     },

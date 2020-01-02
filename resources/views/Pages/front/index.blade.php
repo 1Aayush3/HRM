@@ -1,27 +1,25 @@
 @extends('layouts.index')
-@section('title', $user->name)
+@section('title', Auth::user()->name)
 @section('main-content')
-
 <div class="col-md-9">
-
     <div class="card card-warning card-outline">
         <div class="card-body box-profile">
             <div class="text-center">
                 <!-- Profile Image -->
-                <img class="profile-user-img img-fluid img-circle" src="{{asset('storage/'.$user->image)}}"
+                <img class="profile-user-img img-fluid img-circle" src="{{asset('storage/'.Auth::user()->image)}}"
                     alt="User profile picture">
             </div>
-            <h3 class="profile-username text-center"> {{$user->name}}</h3>
-            <p class="text-muted text-center">{{$user->designation->designation}}</p>
+            <h3 class="profile-username text-center"> {{Auth::user()->name}}</h3>
+            <p class="text-muted text-center">{{Auth::user()->designation->designation}}</p>
             <ul class="list-group list-group-unbordered mb-3">
                 <li class="list-group-item">
-                    <b>Email</b> <a class="float-right"> {{$user->email}} </a>
+                    <b>Email</b> <a class="float-right"> {{Auth::user()->email}} </a>
                 </li>
                 <li class="list-group-item">
                     <b>Phone</b>
                     <a class="float-right">
                         <input id="userphone" class="" type="text" minlength="10" maxlength="14"
-                            value="{{$user->phone}} " readonly style="border: 0px transparent ">
+                            value="{{Auth::user()->z}} " readonly style="border: 0px transparent ">
                         <button type="button" class="btn btn-default" id="editbtn"><i class="fas fa-pen"></i>
                         </button>
                         <button type="button" class="btn btn-primary" id="updatephonebtn" hidden><i
@@ -31,34 +29,34 @@
 
                 </li>
                 <li class="list-group-item">
-                    <b>Alternate Email </b> <a class="float-right"> {{$user->alt_email}} </a>
+                    <b>Alternate Email </b> <a class="float-right"> {{Auth::user()->alt_email}} </a>
                 </li>
                 <li class="list-group-item">
-                    <b>Gender </b> <a class="float-right"> {{$user->gender}} </a>
+                    <b>Gender </b> <a class="float-right"> {{Auth::user()->gender}} </a>
                 </li>
                 <li class="list-group-item">
-                    <b>Joined </b> <a class="float-right">{{$user->joined}}</a>
+                    <b>Joined </b> <a class="float-right">{{Auth::user()->joined}}</a>
                 </li>
                 <li class="list-group-item">
-                    <b>Review </b> <a class="float-right">{{$user->review}}</a>
+                    <b>Review </b> <a class="float-right">{{Auth::user()->review}}</a>
                 </li>
                 <li class="list-group-item">
-                    <b>Left </b> <a class="float-right">{{$user->left}}</a>
+                    <b>Left </b> <a class="float-right">{{Auth::user()->left}}</a>
                 </li>
                 <li class="list-group-item">
-                    <b>Account</b> <a class="float-right">{{$user->acc}}</a>
+                    <b>Account</b> <a class="float-right">{{Auth::user()->acc}}</a>
                 </li>
                 <li class="list-group-item">
-                    <b>Bank</b> <a class="float-right">{{$user->bank}}</a>
+                    <b>Bank</b> <a class="float-right">{{Auth::user()->bank}}</a>
                 </li>
                 <li class="list-group-item">
-                    <b>Branch </b> <a class="float-right">{{$user->branch}}</a>
+                    <b>Branch </b> <a class="float-right">{{Auth::user()->branch}}</a>
                 </li>
                 <li class="list-group-item">
-                    <b>PAN</b> <a class="float-right">{{$user->pan}}</a>
+                    <b>PAN</b> <a class="float-right">{{Auth::user()->pan}}</a>
                 </li>
                 <li class="list-group-item">
-                    <b>CIT </b> <a class="float-right">{{$user->cit}}</a>
+                    <b>CIT </b> <a class="float-right">{{Auth::user()->cit}}</a>
                 </li>
             </ul>
         </div>
@@ -79,11 +77,11 @@
     $('#updatephonebtn').on('click',()=>{
         var phone = $('#userphone').val()?$('#userphone').val():null;
         $.ajax({
-                    url: "{{ route('users.update',$user->id)}}",
+                    url: "{{ route('users.update',Auth::user()->id)}}",
                     type: "PUT",
                     data: {   "_token": "{{ csrf_token() }}",
                             "phone" : phone,
-                            "id" : {{$user->id}}
+                            "id" : {{Auth::user()->id}}
                     },
                     success: function (data) {
                         console.log(data);
@@ -100,9 +98,5 @@
                 }
             );
     });
-
-    // function toaAjax(inputFieldname,value) {
-       
-        
 </script>
 @endpush
