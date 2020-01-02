@@ -14,11 +14,18 @@ class SettingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('permission:employee-list|employee-create|employee-edit|employee-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:employee-create', ['only' => ['create','store']]);
+        $this->middleware('permission:employee-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:employee-delete', ['only' => ['destroy']]);
+    }
     public function index()
     {
-    //     $des=designation::select('designation','id')->get();
-    //    return view('Pages.Setting.index',compact('des'));
-        if(request()->ajax()) {
+        //     $des=designation::select('designation','id')->get();
+        //    return view('Pages.Setting.index',compact('des'));
+        if (request()->ajax()) {
             return datatables()->of(designation::select('*'))
             ->addColumn('action', 'action_button')
             ->rawColumns(['action'])
@@ -51,8 +58,10 @@ class SettingController extends Controller
         ]);
 
         $desId = $request->id;
-        $des   =   designation::updateOrCreate(['id' => $desId],
-        ['designation' => $request->designation]);        
+        $des   =   designation::updateOrCreate(
+            ['id' => $desId],
+            ['designation' => $request->designation]
+        );
         return Response::json($des);
         // $designation = new designation;
         // $designation->designation = $request->get('designation');
@@ -106,7 +115,7 @@ class SettingController extends Controller
      */
     public function destroy($id)
     {
-        $des = designation::where('id',$id)->delete();
+        $des = designation::where('id', $id)->delete();
         return Response::json($des);
         // designation::find($id)->delete();
         // return redirect()->route('settings.index');

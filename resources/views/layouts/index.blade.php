@@ -8,7 +8,8 @@
   <meta name="description" content="">
   <meta name="author"="">
   <title>@if(View::hasSection('title')) @yield('title') @else {{ 'Proshore' }} @endif</title>
-  <link rel="icon" href="https://yt3.ggpht.com/-lACcuw6QnX4/AAAAAAAAAAI/AAAAAAAAAAA/7CDL8hHdNgs/s68-c-k-no-mo-rj-c0xffffff/photo.jpg"/>
+  <link rel="icon"
+    href="https://yt3.ggpht.com/-lACcuw6QnX4/AAAAAAAAAAI/AAAAAAAAAAA/7CDL8hHdNgs/s68-c-k-no-mo-rj-c0xffffff/photo.jpg" />
   <link href="{{asset('js/vendor/bootstrap/css/bootstrap.css')}}" rel="stylesheet">
   <link href="{{asset('js/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
   <link href="{{asset('js/vendor/datatables/dataTables.bootstrap4.css')}}" rel="stylesheet">
@@ -25,7 +26,7 @@
   {{-- <link rel="stylesheet" href="{{asset('css/dist/css/adminlte.min.css')}}"> --}}
   <!-- Ionicons -->
   <link href="{{asset('https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css')}}" rel="stylesheet">
- 
+
   <!-- Jquery -->
   <script src="{{asset('js/vendor/jquery/jquery.min.js')}}"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

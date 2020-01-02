@@ -1,7 +1,7 @@
 @extends('layouts.index')
 @section('title', 'Registration')
 @section('main-content')
-@can(employee-create)
+@can('employee-create')
 {{ Form::open(array('url' => route('employees.store'),'class'=>'form-validation','method'=>'POST','enctype'=>'multipart/form-data'))}}
 @csrf
 <div class="box-body">

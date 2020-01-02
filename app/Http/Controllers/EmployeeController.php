@@ -41,7 +41,7 @@ class EmployeeController extends Controller
         $input['password'] = Hash::make($input['password']);
         $user = User::create($input);
         $this->storeImage($user);
-        $user->assignRole($request->input('role_id'));
+        $user->assignRole($request->input('role_id')); // overwritten as employee
         Session::flash('message', 'Employee registered sucessfully!');
         return Redirect()->route('employees.index');
     }
@@ -73,7 +73,7 @@ class EmployeeController extends Controller
         $user= $update;
         $this->storeImage($user);
         DB::table('model_has_roles')->where('model_id', $id)->delete();
-        $user->assignRole($request->input('roles'));
+        $user->assignRole($request->input('role_id'));
         Session::flash('message', 'Changes saved sucessfully!');
         return redirect()->route('employees.index');
     }
