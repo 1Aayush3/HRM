@@ -5,7 +5,7 @@
       <span>Dashboard</span>
     </a>
   </li>
-  @can('roles-list')
+  @can('role-list')
   <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown"
       aria-haspopup="true" aria-expanded="false">
@@ -30,13 +30,13 @@
       <i class="fas fa-fw fa-table"></i>
       <span>Calender</span></a>
   </li>
-
   @can('role-list')
   <li class="nav-item">
     <a class="nav-link" href="{{route('roles.index')}}">
-      <i class="fas fa-user"></i>
+      <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
       <span>Manage Role</span></a>
   </li>
+
   @endcan
   @can('role-list')
   <li class="nav-item">

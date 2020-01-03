@@ -25,13 +25,7 @@ class SettingController extends Controller
     public function index()
     {
         $des=designation::select('designation', 'id')->get();
-        // if(request()->ajax()) {
-        //     return datatables()->of(designation::select('*'))
-        //     ->addColumn('action', 'action_button')
-        //     ->rawColumns(['action'])
-        //     ->addIndexColumn()
-        //     ->make(true);
-        // }
+        
         return view('Pages.Setting.index', compact('des'));
     }
 

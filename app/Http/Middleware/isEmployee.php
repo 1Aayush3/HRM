@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class isAdmin
+class isEmployee
 {
     /**
      * Handle an incoming request.
@@ -15,7 +15,6 @@ class isAdmin
      */
     public function handle($request, Closure $next)
     {
-        dd($request);
         return $next($request);
     }
 }
