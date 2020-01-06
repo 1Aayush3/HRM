@@ -16,14 +16,10 @@ class EmployeeController extends Controller
 {
     public function __construct()
     {
-        // $this->middleware('permission:employee-list|employee-create|employee-edit|employee-delete', ['only' => ['index','show']]);
-        // $this->middleware('permission:employee-create', ['only' => ['create','store']]);
-        // $this->middleware('permission:employee-edit', ['only' => ['edit','update']]);
-        // $this->middleware('permission:employee-delete', ['only' => ['destroy']]);
-        $this->middleware('permission:role-list|role-create|role-edit|role-delete', ['only' => ['index','store']]);
-        $this->middleware('permission:role-create', ['only' => ['create','store']]);
-        $this->middleware('permission:role-edit', ['only' => ['edit','update']]);
-        $this->middleware('permission:role-delete', ['only' => ['destroy']]);
+        $this->middleware('permission:employee-list|employee-create|employee-edit|employee-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:employee-create', ['only' => ['create','store']]);
+        $this->middleware('permission:employee-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:employee-delete', ['only' => ['destroy']]);
     }
 
     public function index()
