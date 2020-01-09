@@ -1,33 +1,12 @@
-function canSubmit() {
-    if ($('#terms').is(':checked') == true) {
-        $('#submit').prop('disabled', false);
-    } else {
-        $('#submit').prop('disabled', true);
-    }
-}
+
 $(document).ready(function () {
-    var isAfterStartDate = function (txtStartDate, txtEndDate) {
-        var startDate = new Date(txtStartDate);
-        var endDate = new Date(txtEndDate);
-
-        if (startDate < endDate) {
-            return true;
-        }
-    };
-
-    jQuery.validator.addMethod("isAfterStartDate", function (value, element) {
-        return isAfterStartDate($('#txtStartDate').val(), value);
-    }, "Review date should be after Joined date");
-
+    
     jQuery.validator.addMethod("lettersonly", function (value, element) {
         return this.optional(element) || /^[a-z, ]+$/i.test(value);
     }, "Letters and spaces only please");
 
-
-
     if ($(".form-validation").length > 0) {
         $(".form-validation").validate({
-
             rules: {
                 name: {
                     required: true,

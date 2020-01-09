@@ -32,9 +32,10 @@
                     </button>
                     {!! Form::close() !!}
 
-                    {!! Form::open(['method' => 'DELETE', 'url' => route('employees.destroy',$user->id)]) !!}
-                    <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-primary">
-                        Remove</button>
+                    {!! Form::open(['method' => 'DELETE', 'url' => route('employees.destroy',$user->id),'id'=> 'submitRemove']) !!}
+                    <button  type='submit' class="btn btn-primary" onclick="return formRemove()">
+                        Remove
+                    </button>
                     {!! Form::close() !!}
                 </td>
             </tr>

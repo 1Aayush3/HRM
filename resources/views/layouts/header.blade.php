@@ -2,8 +2,8 @@
   style="background: linear-gradient(to right,#F09819,#FF512F );">
   <a class="navbar-brand" href="#">
     Pro<small><span class="lite" style="color:white;">shore</span></small>
-   
   </a>
+
   <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
     <i class="fas fa-bars"></i>
   </button>

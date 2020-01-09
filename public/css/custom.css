@@ -21,5 +21,13 @@ ul#EL {
 }
 
 .input-group-text {
-    width: 118px !important;
+    width: 118px ;
+}
+
+#nprogress .bar {
+    height: 5px !important;
+}
+
+#nprogress .bar {
+    background-color: teal !important;
 }

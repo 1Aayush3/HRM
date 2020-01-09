@@ -32,21 +32,24 @@
 @endsection
 @push('page-script')
 <script>
-    var s="";var m="";var j="";var i="";
+    var s="";var m="";var j="";var i="";var ma="";var b="";
     var data ={{$data}};
     $.each(data, function( index, value ) {
-        if(value==1){s++;}
-        if(value==2){m++;}
-        if(value==3){j++;}
-        if(value==4){i++;}   
+        if(value==1){ma++;}
+        if(value==2){s++;}
+        if(value==7){b++;}
+        if(value==8){m++;}
+        if(value==201){j++;}   
+        if(value==251){i++;}   
+
     });
     var ctx = document.getElementById("PieChart");
     var myPieChart = new Chart(ctx, {
         type: 'pie',
         data: {
-            labels: ["Senior Developer", "Mid-Level Developer", "Junior Developer", "Intern"],
+            labels: ["Manager","Senior Developer", "Mid-Level Developer", "Junior Developer", "Intern", 'Business Analyst'],
             datasets: [{
-                data: [s, m, j, i],
+                data: [ma, s, m, j, i, b],
                 backgroundColor: ['#007bff', '#dc3545', '#ffc107', '#28a745'],
             }],
         },
