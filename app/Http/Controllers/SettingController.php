@@ -50,21 +50,10 @@ class SettingController extends Controller
         $validatedData = $request->validate([
             'designation'=>'required|min:2|max:40|unique:designations,designation|regex:/^[\pL\s\-]+$/u',
         ]);
-
         $desId = $request->id;
-        $des   =   designation::updateOrCreate(
-            ['id' => $desId],
-            ['designation' => $request->designation]
-        );
-        
-        //
-
+        $des   =   designation::updateOrCreate(['id' => $desId],
+        ['designation' => $request->designation]);   
         return Response::json($des);
-        // $designation = new designation;
-        // $designation->designation = $request->get('designation');
-        // $designation->save();
-        // $latest=designation::latest()->first();
-        // return response()->json($latest,200);
     }
 
     /**
@@ -84,13 +73,10 @@ class SettingController extends Controller
      * @param  \App\designation  $designation
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request,$id)
     {
-        $where = array('id' => $id);
-        $des  = designation::where($where)->first();
-        return Response::json($des);
+        //     
     }
-
 
     /**
      * Update the specified resource in storage.
@@ -101,7 +87,12 @@ class SettingController extends Controller
      */
     public function update(Request $request, designation $designation)
     {
-        //
+        $validatedData = $request->validate([
+            'designation'=>'required|min:2|max:40|unique:designations,designation|regex:/^[\pL\s\-]+$/u',
+        ]);
+        $des = designation::find($request->id);
+        $update = $des->update($validatedData);
+        return response()->json($des, 200);
     }
 
     /**
@@ -110,11 +101,12 @@ class SettingController extends Controller
      * @param  \App\designation  $designation
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
-        // $des = designation::where('id',$id)->delete();
-        // return Response::json($des);
         designation::find($id)->delete();
+        if($request->ajax()){
+           return Response::json("terminated",200);
+        }   
         return redirect()->route('settings.index');
     }
 }

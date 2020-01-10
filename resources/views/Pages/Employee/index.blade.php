@@ -36,8 +36,8 @@
                     {!! Form::close() !!}
                     @endcan
                     @can('employee-delete')
-                    {!! Form::open(['method' => 'DELETE', 'url' => route('employees.destroy',$user->id)]) !!}
-                    <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-primary">
+                    {!! Form::open(['method' => 'DELETE', 'url' => route('employees.destroy',$user->id),'id'=>'submitRemove']) !!}
+                    <button type="submit" onclick="return formRemove()" class="btn btn-primary">
                         Remove</button>
                     {!! Form::close() !!}
                     @endcan

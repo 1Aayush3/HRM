@@ -26,5 +26,15 @@
 @endcan
 @endsection
 @push('page-script')
+<script>
+function canSubmit() {
+    if ($('#terms').is(':checked') == true) {
+        $('#submit').prop('disabled', false);
+    } else {
+        $('#submit').prop('disabled', true);
+    }
+}
+</script>
+
 <script src="{{asset('js/formValidation.js')}}"></script>
 @endpush

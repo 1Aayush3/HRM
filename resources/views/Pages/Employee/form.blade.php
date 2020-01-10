@@ -38,7 +38,7 @@
             </div>
             <div class="form-group{{ $errors->has('dob') ? 'has-error' : ''}}">
                 {{ Form::label('dob', 'Date Of Birth *') }}
-                {{Form::date('dob',null,['class'=>'form-control','id'=>'txtDob'])}}
+                {{Form::text('dob',null,['class'=>'form-control','id'=>'txtDob','placeholder'=>'yy-mm-dd'])}}
                 <small style="color:red;">{!! $errors->first('dob', '<p class="help-block">:message</p>') !!}</small>
             </div>
             <div class="form-group{{ $errors->has('gender') ? 'has-error' : ''}}">
@@ -64,17 +64,17 @@
             </div>
             <div class="form-group{{ $errors->has('joined') ? 'has-error' : ''}}">
                 {{ Form::label('joined', 'Joined Date *') }}
-                {{ Form::text('joined',null,['class'=>'form-control','id'=>'txtStartDate','placeholder'=>'mm/dd/yyyy','required'=>'required']) }}
+                {{ Form::text('joined',null,['class'=>'form-control','id'=>'txtStartDate','placeholder'=>'yyyy-mm-dd','required'=>'required']) }}
                 <small style="color:red;">{!! $errors->first('joined', '<p class="help-block">:message</p>') !!}</small>
             </div>
             <div class="form-group{{ $errors->has('left') ? 'has-error' : ''}}">
                 {{ Form::label('left', 'Left Date') }}
-                {{ Form::date('left',null,['class'=>'form-control','id'=>'txtEndDate']) }}
+                {{ Form::text('left',null,['class'=>'form-control','id'=>'txtEndDate','placeholder'=>'yyyy-mm-dd']) }}
                 <small style="color:red;">{!! $errors->first('left', '<p class="help-block">:message</p>') !!}</small>
             </div>
             <div class="form-group{{ $errors->has('review') ? 'has-error' : ''}}">
                 {{ Form::label('review', 'Review Date') }}
-                {{ Form::text('review',null,['class'=>'form-control','id'=>'txtReviewDate','placeholder'=>'mm/dd/yyyy'])}}
+                {{ Form::text('review',null,['class'=>'form-control','id'=>'txtReviewDate','placeholder'=>'yyyy-mm-dd'])}}
                 <small style="color:red;">{!! $errors->first(' review', '<p class="help-block">:message</p>')
                     !!}</small>
             </div>
@@ -195,8 +195,7 @@
     });
 
     $("#txtStartDate").datepicker({
-
-        dateFormat: "mm/dd/yy",
+        dateFormat: "yy-mm-dd",
         onSelect: function(dateText, instance) {
             date = $.datepicker.parseDate(instance.settings.dateFormat, dateText, instance.settings);
             date.setMonth(date.getMonth() + 6);
@@ -205,8 +204,15 @@
     });
 
     $("#txtReviewDate").datepicker({
-        dateFormat: "mm/dd/yy"
+        dateFormat: "yy-mm-dd"
     });
 
+    $("#txtDob").datepicker({
+        dateFormat: "yy-mm-dd"
+    });
+
+    $("#txtEndDate").datepicker({
+        dateFormat: "yy-mm-dd"
+    });
 </script>
 @endpush
